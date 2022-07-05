@@ -1,5 +1,5 @@
 fx_version "cerulean"
-game { "gta5" }
+game "gta5"
 lua54 'yes'
 
 files {
@@ -29,7 +29,7 @@ shared_scripts {
 
 dependencies {
   'es_extended',
-	'ox_lib'
+  'ox_lib'
 }
 
 provides {
