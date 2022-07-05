@@ -2,12 +2,9 @@
 ----------------- https://discord.gg/XJFNyMy3Bv ---------------
 ---------------------------------------------------------------
 
-ESX = nil
-
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
 RegisterServerEvent('fivem-appearance:save')
 AddEventHandler('fivem-appearance:save', function(appearance)
+	local source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.Async.execute('UPDATE users SET skin = @skin WHERE identifier = @identifier', {
 		['@skin'] = json.encode(appearance),
@@ -30,6 +27,7 @@ end)
 
 RegisterServerEvent("fivem-appearance:saveOutfit")
 AddEventHandler("fivem-appearance:saveOutfit", function(name, pedModel, pedComponents, pedProps)
+	local source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.Async.insert('INSERT INTO `outfits` (`identifier`, `name`, `ped`, `components`, `props`) VALUES (@identifier, @name, @ped, @components, @props)', {
 		['@ped'] = json.encode(pedModel),
@@ -59,6 +57,7 @@ end)
 
 RegisterServerEvent("fivem-appearance:deleteOutfit")
 AddEventHandler("fivem-appearance:deleteOutfit", function(id)
+	local source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.Async.execute('DELETE FROM `outfits` WHERE `id` = @id', {
 		['@id'] = id
