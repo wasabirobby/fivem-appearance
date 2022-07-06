@@ -170,6 +170,7 @@ Config.BarberShops = {
     {
         blip = true,
         coords = vector3(-34.31, -154.99, 55.8),
+        distance = 7
     },
 
     {
