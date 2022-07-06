@@ -16,9 +16,9 @@ The updated fivem-appearance including clothing, barber, and tattoo shops for ES
 - Restart/Start server
 
 ## Dependencies
-- es_extended (ESX Legacy and above has been tested)
-- ox_lib
-- oxmysql
+- [es_extended](https://github.com/esx-framework/esx-legacy/releases) (ESX Legacy and above has been tested)
+- [ox_lib](https://github.com/overextended/ox_lib/releases)
+- [oxmysql](https://github.com/overextended/oxmysql/releases)
 
 ## Previews
 https://i.imgur.com/633YDo8.png
