@@ -1,5 +1,5 @@
 fx_version "cerulean"
-game { "gta5" }
+game "gta5"
 lua54 'yes'
 
 files {
@@ -23,13 +23,15 @@ server_scripts {
 }
 
 shared_scripts {
+  '@es_extended/imports.lua',
   '@ox_lib/init.lua',
   'config.lua'
 }
 
 dependencies {
   'es_extended',
-	'ox_lib'
+  'ox_lib',
+  'oxmysql'
 }
 
 provides {

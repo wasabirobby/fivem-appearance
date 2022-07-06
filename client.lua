@@ -2,15 +2,24 @@
 ----------------- https://discord.gg/XJFNyMy3Bv ---------------
 ---------------------------------------------------------------
 
-ESX = nil
 local savedOutfits = {}
 local LastZone, CurrentAction, hasAlreadyEnteredMarker = nil, nil, false
 
-Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(0)
-    end
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+	ESX.PlayerData = xPlayer
+	ESX.PlayerLoaded = true
+end)
+
+RegisterNetEvent('esx:onPlayerLogout')
+AddEventHandler('esx:onPlayerLogout', function()
+	ESX.PlayerLoaded = false
+	ESX.PlayerData = {}
+end)
+
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+	ESX.PlayerData.job = job
 end)
 
 -- Blips
@@ -51,9 +60,9 @@ CreateThread(function()
 
         for i=1, #Config.ClothingShops do
             local dist = #(playerCoords - Config.ClothingShops[i].coords)
-            if dist < Config.Distance then
+            if dist <= Config.Distance then
                 sleep = 0
-                if dist < Config.ClothingShops[i].distance then
+                if dist <= Config.ClothingShops[i].distance then
                     inClothingShop, currentZone = true, i
                 end
             end
@@ -61,9 +70,9 @@ CreateThread(function()
 
         for i=1, #Config.BarberShops do
             local dist = #(playerCoords - Config.BarberShops[i].coords)
-            if dist < Config.Distance then
+            if dist <= Config.Distance then
                 sleep = 0
-                if dist < Config.BarberShops[i].distance then
+                if dist <= Config.BarberShops[i].distance then
                     inBarberShop, currentZone = true, i
                 end
             end
@@ -71,9 +80,9 @@ CreateThread(function()
 
         for i=1, #Config.TattooShops do
             local dist = #(playerCoords - Config.TattooShops[i].coords)
-            if dist < Config.Distance then
+            if dist <= Config.Distance then
                 sleep = 0
-                if dist < Config.TattooShops[i].distance then
+                if dist <= Config.TattooShops[i].distance then
                     inTattooShop, currentZone = true, i
                 end
             end
@@ -260,7 +269,7 @@ AddEventHandler('fivem-appearance:setOutfit', function(data)
 	local currentPedModel = exports['fivem-appearance']:getPedModel(playerPed)
 	if currentPedModel ~= pedModel then
     	exports['fivem-appearance']:setPlayerModel(pedModel)
-		Citizen.Wait(500)
+		Wait(500)
 		playerPed = PlayerPedId()
 		exports['fivem-appearance']:setPedComponents(playerPed, pedComponents)
 		exports['fivem-appearance']:setPedProps(playerPed, pedProps)
