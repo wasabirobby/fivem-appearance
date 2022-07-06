@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Distance = 10.0
+Config.Distance = 5.0
 
 Config.ClothingShops = {
 	{ 
@@ -11,13 +11,13 @@ Config.ClothingShops = {
 
 	{
 		blip = true, 
-        coords = vector3(-708.71, -152.13, 36.4),
+        coords = vector3(-708.7, -152.1, 36.4),
 		distance = 7
 	},
 
 	{
 		blip = true,
-		coords = vector3(-165.15, -302.49, 38.6),
+		coords = vector3(-165.1, -302.4, 38.6),
 		distance = 7
 	},
 	{
@@ -34,7 +34,7 @@ Config.ClothingShops = {
 
 	{
 		blip = true,
-		coords = vector3(-1449.16, -238.35, 48.8),
+		coords = vector3(-1449.1, -238.3, 48.8),
 		distance = 7
 	},
 
@@ -46,7 +46,7 @@ Config.ClothingShops = {
 
 	{
 		blip = true,
-		coords = vector3(122.98, -222.27, 53.5),
+		coords = vector3(122.9, -222.2, 53.5),
 		distance = 7
 	},
 
@@ -88,43 +88,43 @@ Config.ClothingShops = {
 
 	{
 		blip = false,
-		coords = vector3(300.60162353516, -597.76068115234, 42.18409576416),
+		coords = vector3(300.6, -597.7, 42.1), -- Pillbox Hospital
 		distance = 3.5
 	},
 
 	{
 		blip = false,
-		coords = vector3(461.47720336914, -998.05444335938, 30.201751708984),
+		coords = vector3(461.4, -998.0, 30.2), -- MRPD Cloakroom
 		distance = 3.5
 	},
 
 	{
 		blip = false,
-		coords = vector3(-1622.6466064453, -1034.0192871094, 13.145475387573),
+		coords = vector3(-1622.6, -1034.0, 13.1), -- Beach
 		distance = 2.5
 	},
 
 	{
 		blip = false,
-		coords = vector3(1861.1047363281, 3689.2331542969, 34.276859283447),
+		coords = vector3(1861.1, 3689.2, 34.2), -- Sandy PD
 		distance = 2.5
 	},
 
 	{
 		blip = false,
-		coords = vector3(1834.5977783203, 3690.5405273438, 34.270645141602),
+		coords = vector3(1834.5, 3690.5, 34.2), -- Sandy PD #2
 		distance = 2.5
 	},
 
 	{
 		blip = false,
-		coords = vector3(1742.1407470703, 2481.5856933594, 45.740657806396),
+		coords = vector3(1742.1, 2481.5, 45.7), -- Prison
 		distance = 2.5
 	},
     
 	{
 		blip = false,
-		coords = vector3(516.8916015625, 4823.5693359375, -66.18879699707),
+		coords = vector3(516.8, 4823.5, -66.1), -- Submarine interior
 		distance = 2.5
 	},
 
@@ -170,7 +170,7 @@ Config.BarberShops = {
     {
         blip = true,
         coords = vector3(-34.31, -154.99, 55.8),
-        distance = 7
+        distance = 7		
     },
 
     {
