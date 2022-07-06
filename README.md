@@ -1,6 +1,6 @@
-# fivem-appearance with tattoos (ox edition)
+# fivem-appearance with tattoos (esx legacy & ox edition)
 
-The updated fivem-appearance including clothing, barber, and tattoo shops for ESX based servers.
+The updated fivem-appearance including clothing, barber, and tattoo shops for ESX Legacy based servers.
 
 ## Features
 - The interactive clothing/skin manager we know and love (fivem-appearance)
@@ -11,7 +11,7 @@ The updated fivem-appearance including clothing, barber, and tattoo shops for ES
 ## Installation
 - Place resource in resources
 - Run `outfits.sql` file
-- COMPLETELY REMOVE SKINCHANGER AND ESX_SKIN FROM RESOURCES!
+- COMPLETELY REMOVE SKINCHANGER AND ESX_SKIN!
 - Add `ensure fivem-appearance` to your server.cfg
 - Restart/Start server
 
