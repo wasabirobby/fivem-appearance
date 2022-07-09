@@ -2,6 +2,8 @@ Config = {}
 
 Config.Distance = 5.0
 
+Config.OlderESX = false -- If using version of ESX older than Legacy set this to true. (ALSO READ README FOR A FEW MORE STEPS)
+
 Config.ClothingShops = {
 	{ 
         blip = true, -- Blip enabled?
