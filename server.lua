@@ -2,6 +2,10 @@
 ----------------- https://discord.gg/XJFNyMy3Bv ---------------
 ---------------------------------------------------------------
 
+if Config.OlderESX then
+	if not ESX then TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) end
+end
+
 RegisterServerEvent('fivem-appearance:save')
 AddEventHandler('fivem-appearance:save', function(appearance)
 	local source = source
