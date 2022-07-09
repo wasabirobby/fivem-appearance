@@ -1,5 +1,9 @@
 fx_version "cerulean"
 game "gta5"
+
+description 'Wasabi fork of fivem-appearance'
+version '1.0.1'
+
 lua54 'yes'
 
 files {
@@ -19,19 +23,19 @@ client_scripts {
 
 server_scripts {
   '@oxmysql/lib/MySQL.lua',
+  --'@mysql-async/lib/MySQL.lua', -- Remove hyphens at front of this line and remove line above this if not using oxmysql
   'server.lua'
 }
 
 shared_scripts {
-  '@es_extended/imports.lua',
+  '@es_extended/imports.lua', -- Remove this out if using older ESX
   '@ox_lib/init.lua',
   'config.lua'
 }
 
 dependencies {
   'es_extended',
-  'ox_lib',
-  'oxmysql'
+  'ox_lib'
 }
 
 provides {
