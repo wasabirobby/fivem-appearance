@@ -5,17 +5,31 @@
 local savedOutfits = {}
 local LastZone, CurrentAction, hasAlreadyEnteredMarker = nil, nil, false
 
+if Config.OlderESX then
+    if not ESX then
+        Citizen.CreateThread(function()
+            while ESX == nil do
+                TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+                Citizen.Wait(0)
+            end
+        end)
+    end
+end
+
+
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerData = xPlayer
 	ESX.PlayerLoaded = true
 end)
 
-RegisterNetEvent('esx:onPlayerLogout')
-AddEventHandler('esx:onPlayerLogout', function()
-	ESX.PlayerLoaded = false
-	ESX.PlayerData = {}
-end)
+if not Config.OlderESX then
+    RegisterNetEvent('esx:onPlayerLogout')
+    AddEventHandler('esx:onPlayerLogout', function()
+        ESX.PlayerLoaded = false
+        ESX.PlayerData = {}
+    end)
+end
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
