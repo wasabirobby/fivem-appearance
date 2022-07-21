@@ -387,3 +387,24 @@ AddEventHandler('esx_skin:openSaveableMenu', function(submitCb, cancelCb)
 		end
 	end, config)
 end)
+
+RegisterNetEvent('fivem-appearance:skinCommand')
+AddEventHandler('fivem-appearance:skinCommand', function()
+    local config = {
+        ped = true,
+        headBlend = true,
+        faceFeatures = true,
+        headOverlays = true,
+        components = true,
+        props = true,
+        tattoos = true
+    }
+    exports['fivem-appearance']:startPlayerCustomization(function (appearance)
+        if (appearance) then
+            TriggerServerEvent('fivem-appearance:save', appearance)
+            ESX.SetPlayerData('ped', PlayerPedId())
+        else
+            ESX.SetPlayerData('ped', PlayerPedId())
+        end
+    end, config)
+end)

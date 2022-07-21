@@ -81,3 +81,8 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 		cb(appearance)
 	end)
 end)
+
+ESX.RegisterCommand('skin', 'admin', function(xPlayer, args, showError)
+	args.playerId.triggerEvent('fivem-appearance:skinCommand')
+end, false, {help = 'Change Skin', validate = true, arguments = {
+	{name = 'playerId', help = 'Player ID', type = 'player'}}})
