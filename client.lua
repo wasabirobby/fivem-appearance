@@ -151,10 +151,10 @@ CreateThread(function()
                     exports['fivem-appearance']:startPlayerCustomization(function (appearance)
 						if (appearance) then
 							TriggerServerEvent('fivem-appearance:save', appearance)
-                            TriggerEvent('esx:restoreloadout')
+                            TriggerEvent('esx:restoreLoadout')
 							ESX.SetPlayerData('ped', PlayerPedId())
 						else
-                            TriggerEvent('esx:restoreloadout')
+                            TriggerEvent('esx:restoreLoadout')
 							ESX.SetPlayerData('ped', PlayerPedId())
 						end
 					end, config)
@@ -172,10 +172,10 @@ CreateThread(function()
 						if (appearance) then
 							TriggerServerEvent('fivem-appearance:save', appearance)
 							ESX.SetPlayerData('ped', PlayerPedId())
-                            TriggerEvent('esx:restoreloadout')
+                            TriggerEvent('esx:restoreLoadout')
 						else
 							ESX.SetPlayerData('ped', PlayerPedId())
-                            TriggerEvent('esx:restoreloadout')
+                            TriggerEvent('esx:restoreLoadout')
 						end
 					end, config)
                 end
@@ -232,10 +232,10 @@ RegisterNetEvent('fivem-appearance:clothingMenu', function()
 		if (appearance) then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			ESX.SetPlayerData('ped', PlayerPedId()) -- Fix for esx legacy
-            TriggerEvent('esx:restoreloadout')
+            TriggerEvent('esx:restoreLoadout')
 		else
 			ESX.SetPlayerData('ped', PlayerPedId()) -- Fix for esx legacy
-            TriggerEvent('esx:restoreloadout')
+            TriggerEvent('esx:restoreLoadout')
 		end
 	end, config)
 end)
