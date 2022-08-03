@@ -152,8 +152,10 @@ CreateThread(function()
                     exports['fivem-appearance']:startPlayerCustomization(function (appearance)
 						if (appearance) then
 							TriggerServerEvent('fivem-appearance:save', appearance)
+                            TriggerEvent('esx:restoreloadout')
 							ESX.SetPlayerData('ped', PlayerPedId())
 						else
+                            TriggerEvent('esx:restoreloadout')
 							ESX.SetPlayerData('ped', PlayerPedId())
 						end
 					end, config)
@@ -357,6 +359,14 @@ RegisterCommand('propfix', function()
 end)
 
 -- esx_skin and skinchanger compatibility
+
+AddEventHandler('skinchanger:getSkin', function(cb)
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(appearance)
+        print(appearance.sex)
+        cb(appearance)
+    end)
+end)
+
 RegisterNetEvent('skinchanger:loadSkin')
 AddEventHandler('skinchanger:loadSkin', function(skin, cb)
 	if not skin.model then skin.model = 'mp_m_freemode_01' end
@@ -364,6 +374,36 @@ AddEventHandler('skinchanger:loadSkin', function(skin, cb)
 	if cb ~= nil then
 		cb()
 	end
+end)
+
+convertClothes = function(outfit)
+    local data = {
+        Components = {
+            { drawable = outfit.tshirt_1 or 0, texture = outfit.tshirt_2 or 0, component_id = 8 },
+            { drawable = outfit.torso_1 or 0, texture = outfit.torso_2 or 0, component_id = 11 },
+            { drawable = outfit.decals_1 or 0, texture = outfit.decals_2 or 0, component_id = 10 },
+            { drawable = outfit.arms or 0, texture = 10, component_id = 3 },
+            { drawable = outfit.pants_1 or 0, texture = outfit.pants_2 or 0, component_id = 4 },
+            { drawable = outfit.shoes_1 or 0, texture = outfit.shoes_2 or 0, component_id = 6 },
+            { drawable = outfit.chain_1 or 0, texture = outfit.chain_2 or 0, component_id = 7 },
+            { drawable = outfit.bproof_1 or 0, texture = outfit.bproof_2 or 0, component_id = 9 },
+        },
+        Props = {
+            { drawable = outfit.helmet_1 or 0, texture = outfit.helmet_2 or 0, prop_id = 0 },
+            { drawable = outfit.ears_1 or 0, texture = outfit.ears_2 or 0, prop_id = 2 },
+            { drawable = outfit.watches_1 or 0, texture = outfit.watches_2 or 0, prop_id = 6 },
+            { drawable = outfit.bracelets_1 or 0, texture = outfit.bracelets_2 or 0, prop_id = 7 },
+        }
+    }
+    return data
+end
+
+RegisterNetEvent('skinchanger:loadClothes')
+AddEventHandler('skinchanger:loadClothes', function(skin, clothes)
+    local playerPed = PlayerPedId()
+    local outfit = convertClothes(clothes)
+    exports['fivem-appearance']:setPedComponents(playerPed, outfit.Components)
+    exports['fivem-appearance']:setPedProps(playerPed, outfit.Props)
 end)
 
 RegisterNetEvent('esx_skin:openSaveableMenu')
@@ -386,25 +426,4 @@ AddEventHandler('esx_skin:openSaveableMenu', function(submitCb, cancelCb)
 			ESX.SetPlayerData('ped', PlayerPedId())
 		end
 	end, config)
-end)
-
-RegisterNetEvent('fivem-appearance:skinCommand')
-AddEventHandler('fivem-appearance:skinCommand', function()
-    local config = {
-        ped = true,
-        headBlend = true,
-        faceFeatures = true,
-        headOverlays = true,
-        components = true,
-        props = true,
-        tattoos = true
-    }
-    exports['fivem-appearance']:startPlayerCustomization(function (appearance)
-        if (appearance) then
-            TriggerServerEvent('fivem-appearance:save', appearance)
-            ESX.SetPlayerData('ped', PlayerPedId())
-        else
-            ESX.SetPlayerData('ped', PlayerPedId())
-        end
-    end, config)
 end)
