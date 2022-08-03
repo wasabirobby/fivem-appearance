@@ -16,7 +16,6 @@ if Config.OlderESX then
     end
 end
 
-
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerData = xPlayer
@@ -173,8 +172,10 @@ CreateThread(function()
 						if (appearance) then
 							TriggerServerEvent('fivem-appearance:save', appearance)
 							ESX.SetPlayerData('ped', PlayerPedId())
+                            TriggerEvent('esx:restoreloadout')
 						else
 							ESX.SetPlayerData('ped', PlayerPedId())
+                            TriggerEvent('esx:restoreloadout')
 						end
 					end, config)
                 end
@@ -231,8 +232,10 @@ RegisterNetEvent('fivem-appearance:clothingMenu', function()
 		if (appearance) then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			ESX.SetPlayerData('ped', PlayerPedId()) -- Fix for esx legacy
+            TriggerEvent('esx:restoreloadout')
 		else
 			ESX.SetPlayerData('ped', PlayerPedId()) -- Fix for esx legacy
+            TriggerEvent('esx:restoreloadout')
 		end
 	end, config)
 end)
