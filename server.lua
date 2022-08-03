@@ -69,6 +69,15 @@ AddEventHandler("fivem-appearance:deleteOutfit", function(id)
 end)
 
 -- ESX Skin Compatibility
+
+getGender = function(model)
+    if model == 'mp_f_freemode_01' then
+        return 1
+    else
+        return 0
+    end
+end
+
 ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
@@ -78,6 +87,7 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 		if user.skin then
 			appearance = json.decode(user.skin)
 		end
+		appearance.sex = getGender(user.skin.model)
 		cb(appearance)
 	end)
 end)
