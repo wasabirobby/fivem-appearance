@@ -423,10 +423,12 @@ AddEventHandler('esx_skin:openSaveableMenu', function(submitCb, cancelCb)
 		if (appearance) then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			ESX.SetPlayerData('ped', PlayerPedId())
+			TriggerEvent('esx:restoreLoadout')
 			if submitCb then submitCb() end
 		else
 			if cancelCb then cancelCb() end
 			ESX.SetPlayerData('ped', PlayerPedId())
+			TriggerEvent('esx:restoreLoadout')
 		end
 	end, config)
 end)
