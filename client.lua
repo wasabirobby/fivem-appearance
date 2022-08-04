@@ -374,6 +374,7 @@ RegisterNetEvent('skinchanger:loadSkin')
 AddEventHandler('skinchanger:loadSkin', function(skin, cb)
 	if not skin.model then skin.model = 'mp_m_freemode_01' end
 	exports['fivem-appearance']:setPlayerAppearance(skin)
+	TriggerEvent('esx:restoreLoadout')
 	if cb ~= nil then
 		cb()
 	end
