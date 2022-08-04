@@ -351,6 +351,28 @@ RegisterNetEvent('fivem-appearance:deleteOutfitMenu', function()
     end)
 end)
 
+RegisterNetEvent('fivem-appearance:skinCommand')
+AddEventHandler('fivem-appearance:skinCommand', function()
+	local config = {
+		ped = true,
+		headBlend = true,
+		faceFeatures = true,
+		headOverlays = true,
+		components = true,
+		props = true
+	}
+	exports['fivem-appearance']:startPlayerCustomization(function (appearance)
+		if (appearance) then
+			TriggerServerEvent('fivem-appearance:save', appearance)
+			ESX.SetPlayerData('ped', PlayerPedId())
+			TriggerEvent('esx:restoreLoadout')
+		else
+			ESX.SetPlayerData('ped', PlayerPedId())
+			TriggerEvent('esx:restoreLoadout')
+		end
+	end, config)
+end)
+
 RegisterCommand('propfix', function()
     for k, v in pairs(GetGamePool('CObject')) do
         if IsEntityAttachedToEntity(PlayerPedId(), v) then
