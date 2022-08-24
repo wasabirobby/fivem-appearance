@@ -405,20 +405,22 @@ end)
 convertClothes = function(outfit)
     local data = {
         Components = {
-            { drawable = outfit.tshirt_1 or 0, texture = outfit.tshirt_2 or 0, component_id = 8 },
-            { drawable = outfit.torso_1 or 0, texture = outfit.torso_2 or 0, component_id = 11 },
-            { drawable = outfit.decals_1 or 0, texture = outfit.decals_2 or 0, component_id = 10 },
-            { drawable = outfit.arms or 0, texture = 10, component_id = 3 },
+            { drawable = outfit.mask_1 or 0, texture = outfit.mask_2 or 0, component_id = 1 },
+            { drawable = outfit.arms or 0, texture = outfit.arms_2 or 0, component_id = 3 },
             { drawable = outfit.pants_1 or 0, texture = outfit.pants_2 or 0, component_id = 4 },
             { drawable = outfit.shoes_1 or 0, texture = outfit.shoes_2 or 0, component_id = 6 },
             { drawable = outfit.chain_1 or 0, texture = outfit.chain_2 or 0, component_id = 7 },
+            { drawable = outfit.tshirt_1 or 0, texture = outfit.tshirt_2 or 0, component_id = 8 },
             { drawable = outfit.bproof_1 or 0, texture = outfit.bproof_2 or 0, component_id = 9 },
+            { drawable = outfit.decals_1 or 0, texture = outfit.decals_2 or 0, component_id = 10 },
+            { drawable = outfit.torso_1 or 0, texture = outfit.torso_2 or 0, component_id = 11 },
         },
         Props = {
-            { drawable = outfit.helmet_1 or 0, texture = outfit.helmet_2 or 0, prop_id = 0 },
-            { drawable = outfit.ears_1 or 0, texture = outfit.ears_2 or 0, prop_id = 2 },
-            { drawable = outfit.watches_1 or 0, texture = outfit.watches_2 or 0, prop_id = 6 },
-            { drawable = outfit.bracelets_1 or 0, texture = outfit.bracelets_2 or 0, prop_id = 7 },
+            { drawable = outfit.helmet_1 or -1, texture = outfit.helmet_2 or 0, prop_id = 0 },
+            { drawable = outfit.glasses_1 or -1, texture = outfit.glasses_2 or 0, prop_id = 1 },
+            { drawable = outfit.ears_1 or -1, texture = outfit.ears_2 or 0, prop_id = 2 },
+            { drawable = outfit.watches_1 or -1, texture = outfit.watches_2 or 0, prop_id = 6 },
+            { drawable = outfit.bracelets_1 or -1, texture = outfit.bracelets_2 or 0, prop_id = 7 },
         }
     }
     return data
