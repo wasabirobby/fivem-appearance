@@ -22,8 +22,8 @@ client_scripts {
 }
 
 server_scripts {
-  '@oxmysql/lib/MySQL.lua',
-  --'@mysql-async/lib/MySQL.lua', -- Remove hyphens at front of this line and remove line above this if not using oxmysql
+  '@mysql-async/lib/MySQL.lua',
+  'skinconverter.lua',
   'server.lua'
 }
 
