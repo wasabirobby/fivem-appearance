@@ -35,6 +35,26 @@ AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
 end)
 
+AddEventHandler('esx:onPlayerDeath', function(data)
+    closeMenu()
+end)
+
+function closeMenu()
+    RenderScriptCams(false, false, 0, true, true)
+    DestroyAllCams(true)
+    DisplayRadar(true)
+    SetNuiFocus(false, false)
+    SetEntityInvincible(PlayerPedId(), false)
+
+    SetNuiFocus(false, false)
+    SendNUIMessage(
+        {
+            type = 'appearance_hide',
+            payload = {}
+        }
+    )
+end
+
 -- Blips
 
 CreateBlip = function(coords, sprite, colour, text, scale)
