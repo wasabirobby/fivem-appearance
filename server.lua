@@ -4,7 +4,24 @@
 
 if Config.OlderESX then
 	if not ESX then TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) end
+else
+	ESX = exports["es_extended"]:getSharedObject()
 end
+
+MySQL.ready(function()
+	MySQL.Sync.execute(
+		"CREATE TABLE IF NOT EXISTS `outfits` (" ..
+			"`id` int NOT NULL AUTO_INCREMENT, " ..
+			"`identifier` varchar(60) NOT NULL, " ..
+			"`name` longtext, " ..
+			"`ped` longtext, " ..
+			"`components` longtext, " ..
+			"`props` longtext, " ..
+			"PRIMARY KEY (`id`), " ..
+			"UNIQUE KEY `id_UNIQUE` (`id`) " ..
+		") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; "
+	)
+end)
 
 RegisterServerEvent('fivem-appearance:save')
 AddEventHandler('fivem-appearance:save', function(appearance)
@@ -79,21 +96,23 @@ getGender = function(model)
 end
 
 ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
-		['@identifier'] = xPlayer.identifier
-	}, function(users)
-		local user, appearance = users[1]
-		local jobSkin = {
-			skin_male   = xPlayer.job.skin_male,
-			skin_female = xPlayer.job.skin_female
-		}
-		if user.skin then
-			appearance = json.decode(user.skin)
-		end
-		appearance.sex = getGender(appearance.model)
-		cb(appearance, jobSkin)
-	end)
+	if ESX.PlayerLoaded then
+		local xPlayer = ESX.GetPlayerFromId(source)
+		MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
+			['@identifier'] = xPlayer.identifier
+		}, function(users)
+			local user, appearance = users[1]
+			local jobSkin = {
+				skin_male   = xPlayer.job.skin_male,
+				skin_female = xPlayer.job.skin_female
+			}
+			if user.skin then
+				appearance = json.decode(user.skin)
+			end
+			appearance.sex = getGender(appearance.model)
+			cb(appearance, jobSkin)
+		end)
+	end
 end)
 
 ESX.RegisterCommand('skin', 'admin', function(xPlayer, args, showError)

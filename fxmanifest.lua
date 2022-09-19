@@ -28,7 +28,6 @@ server_scripts {
 }
 
 shared_scripts {
-  '@es_extended/imports.lua', -- Remove this out if using older ESX
   '@ox_lib/init.lua',
   'config.lua'
 }
