@@ -8,6 +8,21 @@ else
 	ESX = exports["es_extended"]:getSharedObject()
 end
 
+MySQL.ready(function()
+	MySQL.Sync.execute(
+		"CREATE TABLE IF NOT EXISTS `outfits` (" ..
+			"`id` int NOT NULL AUTO_INCREMENT, " ..
+			"`identifier` varchar(60) NOT NULL, " ..
+			"`name` longtext, " ..
+			"`ped` longtext, " ..
+			"`components` longtext, " ..
+			"`props` longtext, " ..
+			"PRIMARY KEY (`id`), " ..
+			"UNIQUE KEY `id_UNIQUE` (`id`) " ..
+		") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; "
+	)
+end)
+
 RegisterServerEvent('fivem-appearance:save')
 AddEventHandler('fivem-appearance:save', function(appearance)
 	local source = source
