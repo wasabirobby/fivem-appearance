@@ -5,7 +5,7 @@ Config.Distance = 5.0
 Config.OlderESX = false -- If using version of ESX older than Legacy set this to true. (ALSO READ README FOR A FEW MORE STEPS)
 
 Config.ClothingShops = {
-	{ 
+	{
         blip = true, -- Blip enabled?
         coords = vector3(72.3, -1399.1, 28.4), -- Coords of shop
         distance = 7 -- Distance to show text ui prompt
@@ -63,19 +63,19 @@ Config.ClothingShops = {
 		coords = vector3(618.1, 2759.6, 41.1),
 		distance = 7
 	},
-	
+
     {
 		blip = true,
 		coords = vector3(1190.6, 2713.4, 37.2),
 		distance = 7
 	},
-	
+
     {
 		blip = true,
 		coords = vector3(-1193.4, -772.3, 16.3),
 		distance = 7
 	},
-	
+
     {
 		blip = true,
 		coords = vector3(-3172.5, 1048.1, 19.9),
@@ -123,13 +123,12 @@ Config.ClothingShops = {
 		coords = vector3(1742.1, 2481.5, 45.7), -- Prison
 		distance = 2.5
 	},
-    
+
 	{
 		blip = false,
 		coords = vector3(516.8, 4823.5, -66.1), -- Submarine interior
 		distance = 2.5
 	},
-
 }
 
 Config.BarberShops = {
@@ -218,5 +217,4 @@ Config.TattooShops = {
         coords = vector3(-293.7, 6200.0, 31.4),
         distance = 7
     },
-
 }

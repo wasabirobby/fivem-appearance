@@ -4,6 +4,8 @@
 
 if Config.OlderESX then
 	if not ESX then TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) end
+else
+	ESX = exports["es_extended"]:getSharedObject()
 end
 
 RegisterServerEvent('fivem-appearance:save')
@@ -79,21 +81,23 @@ getGender = function(model)
 end
 
 ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
-		['@identifier'] = xPlayer.identifier
-	}, function(users)
-		local user, appearance = users[1]
-		local jobSkin = {
-			skin_male   = xPlayer.job.skin_male,
-			skin_female = xPlayer.job.skin_female
-		}
-		if user.skin then
-			appearance = json.decode(user.skin)
-		end
-		appearance.sex = getGender(appearance.model)
-		cb(appearance, jobSkin)
-	end)
+	if ESX.PlayerLoaded then
+		local xPlayer = ESX.GetPlayerFromId(source)
+		MySQL.Async.fetchAll('SELECT skin FROM users WHERE identifier = @identifier', {
+			['@identifier'] = xPlayer.identifier
+		}, function(users)
+			local user, appearance = users[1]
+			local jobSkin = {
+				skin_male   = xPlayer.job.skin_male,
+				skin_female = xPlayer.job.skin_female
+			}
+			if user.skin then
+				appearance = json.decode(user.skin)
+			end
+			appearance.sex = getGender(appearance.model)
+			cb(appearance, jobSkin)
+		end)
+	end
 end)
 
 ESX.RegisterCommand('skin', 'admin', function(xPlayer, args, showError)

@@ -14,6 +14,8 @@ if Config.OlderESX then
             end
         end)
     end
+else
+    ESX = exports["es_extended"]:getSharedObject()
 end
 
 RegisterNetEvent('esx:playerLoaded')
