@@ -262,6 +262,42 @@ RegisterNetEvent('fivem-appearance:clothingMenu', function()
 	end, config)
 end)
 
+openWardrobe = function()
+    ESX.TriggerServerCallback('fivem-appearance:getOutfits', function(cb)
+        local Options = {}
+        if cb then
+            Options = {}
+            for i=1, #cb do
+                table.insert(Options, {
+                    title = cb[i].name,
+                    event = 'fivem-appearance:setOutfit',
+                    args = {
+                        ped = cb[i].ped, 
+						components = cb[i].components, 
+						props = cb[i].props
+                    }
+                })
+            end
+        else
+            Options = {
+                {
+                    title = 'No Saved Outfits!',
+                    description = '',
+                    event = ''
+                }
+            }
+        end
+        lib.registerContext({
+            id = 'wardrobe_menu',
+            title = 'Wardrobe',
+            options = Options
+        })
+        lib.showContext('wardrobe_menu')
+    end)
+end
+
+exports('openWardrobe', openWardrobe)
+
 RegisterNetEvent('fivem-appearance:pickNewOutfit', function()
     ESX.TriggerServerCallback('fivem-appearance:getOutfits', function(cb)
         local Options = {}
