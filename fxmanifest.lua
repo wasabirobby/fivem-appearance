@@ -2,7 +2,7 @@ fx_version "cerulean"
 game "gta5"
 
 description 'Wasabi fork of fivem-appearance'
-version '1.0.7'
+version '1.0.8'
 
 lua54 'yes'
 
