@@ -7,14 +7,14 @@ local LastZone, CurrentAction, hasAlreadyEnteredMarker, version = nil, nil, fals
 
 if GetResourceState("es_extended") == "started" or GetResourceState("es_extended") == "starting" then
     version = GetResourceMetadata("es_extended", "version")
-    if version < "1.8.5" then
+    if version < "1.3.0" then
         Citizen.CreateThread(function()
             while ESX == nil do
                 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
                 Citizen.Wait(0)
             end
         end)
-    elseif version >= "1.8.5" then
+    elseif version >= "1.3.0" then
         ESX = exports["es_extended"]:getSharedObject()
     end
 end
@@ -25,7 +25,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerLoaded = true
 end)
 
-if version >= "1.8.5" then
+if version >= "1.3.0" then
     RegisterNetEvent('esx:onPlayerLogout')
     AddEventHandler('esx:onPlayerLogout', function()
         ESX.PlayerLoaded = false

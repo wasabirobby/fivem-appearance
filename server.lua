@@ -6,7 +6,7 @@ local version = nil
 
 if GetResourceState("es_extended") == "started" or GetResourceState("es_extended") == "starting" then
     version = GetResourceMetadata("es_extended", "version")
-    if version < "1.8.5" then
+    if version < "1.3.0" then
         Citizen.CreateThread(function()
             while ESX == nil do
                 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -19,7 +19,7 @@ if GetResourceState("es_extended") == "started" or GetResourceState("es_extended
 			print("^0[^2INFO^0] Script successfully started!")
 			print("^0[^2INFO^0] ESX Version detected: ^2" .. version .. "^0")
 		end)
-    elseif version >= "1.8.5" then
+    elseif version >= "1.3.0" then
         ESX = exports["es_extended"]:getSharedObject()
 
 		Citizen.CreateThread(function()
