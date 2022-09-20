@@ -2,7 +2,62 @@ Config = {}
 
 Config.Distance = 5.0
 
-Config.OlderESX = false -- If using version of ESX older than Legacy set this to true. (ALSO READ README FOR A FEW MORE STEPS)
+Config.Translation = {
+	--| Blips
+	Blip = {
+		clothingShop = 'Clothing Shop',
+		barberShop = 'Barber Shop',
+		tattooShop = 'Tattoo Shop'
+	},
+
+	--| Menus
+	Menu = {
+		clothingMenu = '[E] - Change Clothing',
+		barberMenu = '[E] - Change Hair/Face',
+		tattooMenu = '[E] - Change Tattoos'
+	},
+
+	--| ClothingShop
+	Shop = {
+		masterTitle = 'Shop Menu',
+
+		clothingMenuTitle = 'Change Clothing',
+		clothingMenuDesc = 'Browse available clothing',
+
+		pickNewOutfitTitle = 'Browse Outfits',
+		pickNewOutfitDesc = 'Browse saved outfits',
+
+		saveOutfitTitle = 'Save Outfit',
+		saveOutfitDesc = 'Save current outfit',
+
+		deleteOutfitMenuTitle = 'Delete Outfits',
+		deleteOutfitMenuDesc = 'Browse saved outfits'
+	},
+
+	--| Wardrobe
+	Wardrobe = {
+		masterTitle = 'Wardrobe Menu',
+
+		menuTitle = 'No Saved Outfits!',
+		menuDesc = 'Go to the clothing Shop'
+	},
+
+	--| New Outfit
+	NewOutfit = {
+		masterTitle = 'Saved Outfits',
+
+		title = '< Go Back',
+		desc = 'No Saved Outfits!'
+	},
+
+	--| Delete Outfit
+	DeleteOutfit = {
+		masterTitle = 'Delete Outfits',
+
+		title = '< Go Back',
+		desc = 'No Saved Outfits!'
+	},
+}
 
 Config.ClothingShops = {
 	{
@@ -22,6 +77,7 @@ Config.ClothingShops = {
 		coords = vector3(-165.1, -302.4, 38.6),
 		distance = 7
 	},
+
 	{
 		blip = true,
 		coords = vector3(428.7, -800.1, 28.5),
