@@ -3,19 +3,20 @@
 ---------------------------------------------------------------
 
 local savedOutfits = {}
-local LastZone, CurrentAction, hasAlreadyEnteredMarker = nil, nil, false
+local LastZone, CurrentAction, hasAlreadyEnteredMarker, version = nil, nil, false, nil
 
-if Config.OlderESX then
-    if not ESX then
+if GetResourceState("es_extended") == "started" or GetResourceState("es_extended") == "starting" then
+    version = GetResourceMetadata("es_extended", "version")
+    if version < "1.3.0" then
         Citizen.CreateThread(function()
             while ESX == nil do
                 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
                 Citizen.Wait(0)
             end
         end)
+    elseif version >= "1.3.0" then
+        ESX = exports["es_extended"]:getSharedObject()
     end
-else
-    ESX = exports["es_extended"]:getSharedObject()
 end
 
 RegisterNetEvent('esx:playerLoaded')
@@ -24,7 +25,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerLoaded = true
 end)
 
-if not Config.OlderESX then
+if version >= "1.3.0" then
     RegisterNetEvent('esx:onPlayerLogout')
     AddEventHandler('esx:onPlayerLogout', function()
         ESX.PlayerLoaded = false
@@ -73,17 +74,17 @@ end
 CreateThread(function()
     for i=1, #Config.ClothingShops do
         if Config.ClothingShops[i].blip then
-            CreateBlip(Config.ClothingShops[i].coords, 73, 47, 'Clothing Shop', 0.7)
+            CreateBlip(Config.ClothingShops[i].coords, 73, 47, Config.Translation.Blip.clothingShop, 0.7)
         end
     end
     for i=1, #Config.BarberShops do
         if Config.BarberShops[i].blip then
-            CreateBlip(Config.BarberShops[i].coords, 71, 47, 'Barber Shop', 0.7)
+            CreateBlip(Config.BarberShops[i].coords, 71, 47, Config.Translation.Blip.barberShop, 0.7)
         end
     end
     for i=1, #Config.TattooShops do
         if Config.TattooShops[i].blip then
-            CreateBlip(Config.TattooShops[i].coords, 75, 1, 'Tattoo Shop', 0.7)
+            CreateBlip(Config.TattooShops[i].coords, 75, 1, Config.Translation.Blip.tattooShop, 0.7)
         end
     end
 end)
@@ -126,19 +127,19 @@ CreateThread(function()
         if (inClothingShop and not hasAlreadyEnteredMarker) or (inClothingShop and LastZone ~= currentZone) then
             hasAlreadyEnteredMarker, LastZone = true, currentZone
             CurrentAction = 'clothingMenu'
-            lib.showTextUI('[E] - Change Clothing')
+            lib.showTextUI(Config.Translation.Menu.clothingMenu)
         end
 
         if (inBarberShop and not hasAlreadyEnteredMarker) or (inBarberShop and LastZone ~= currentZone) then
             hasAlreadyEnteredMarker, LastZone = true, currentZone
             CurrentAction = 'barberMenu'
-            lib.showTextUI('[E] - Change Hair/Face')
+            lib.showTextUI(Config.Translation.Menu.barberMenu)
         end
 
         if (inTattooShop and not hasAlreadyEnteredMarker) or (inTattooShop and LastZone ~= currentZone) then
             hasAlreadyEnteredMarker, LastZone = true, currentZone
             CurrentAction = 'tattooMenu'
-            lib.showTextUI('[E] - Change Tattoos')
+            lib.showTextUI(Config.Translation.Menu.tattooMenu)
         end
 
         if not inClothingShop and not inBarberShop and not inTattooShop and hasAlreadyEnteredMarker then
@@ -210,29 +211,29 @@ end)
 RegisterNetEvent('fivem-appearance:clothingShop', function()
 	lib.registerContext({
 		id = 'clothing_menu',
-		title = 'Wardrobe Menu',
+		title = Config.Translation.Shop.masterTitle,
 		options = {
 			{
-				title = 'Change Clothing',
-				description = 'Browse avaliable clothing',
+				title = Config.Translation.Shop.clothingMenuTitle,
+				description = Config.Translation.Shop.clothingMenuDesc,
 				arrow = false,
 				event = 'fivem-appearance:clothingMenu',
 			},
 			{
-				title = 'Browse Outfits',
-				description = 'Browse saved outfits',
+				title = Config.Translation.Shop.pickNewOutfitTitle,
+				description = Config.Translation.Shop.pickNewOutfitDesc,
 				arrow = false,
 				event = 'fivem-appearance:pickNewOutfit'
 			},
 			{
-				title = 'Save Outfit',
-				description = 'Save current outfit',
+				title = Config.Translation.Shop.saveOutfitTitle,
+				description = Config.Translation.Shop.saveOutfitDesc,
 				arrow = false,
 				event = 'fivem-appearance:saveOutfit'
 			},
 			{
-				title = 'Delete Outfits',
-				description = 'Browse saved outfits',
+				title = Config.Translation.Shop.deleteOutfitMenuTitle,
+				description = Config.Translation.Shop.deleteOutfitMenuDesc,
 				arrow = false,
 				event = 'fivem-appearance:deleteOutfitMenu'
 			},
@@ -272,8 +273,8 @@ openWardrobe = function()
                     title = cb[i].name,
                     event = 'fivem-appearance:setOutfit',
                     args = {
-                        ped = cb[i].ped, 
-						components = cb[i].components, 
+                        ped = cb[i].ped,
+						components = cb[i].components,
 						props = cb[i].props
                     }
                 })
@@ -281,15 +282,15 @@ openWardrobe = function()
         else
             Options = {
                 {
-                    title = 'No Saved Outfits!',
-                    description = '',
+                    title = Config.Translation.Wardrobe.menuTitle,
+                    description = Config.Translation.Wardrobe.menuDesc,
                     event = ''
                 }
             }
         end
         lib.registerContext({
             id = 'wardrobe_menu',
-            title = 'Wardrobe',
+            title = Config.Translation.Wardrobe.masterTitle,
             options = Options
         })
         lib.showContext('wardrobe_menu')
@@ -304,7 +305,7 @@ RegisterNetEvent('fivem-appearance:pickNewOutfit', function()
         if cb then
             Options = {
                 {
-                    title = '< Go Back',
+                    title = Config.Translation.NewOutfit.title,
                     event = 'fivem-appearance:clothingShop'
                 }
             }
@@ -314,7 +315,7 @@ RegisterNetEvent('fivem-appearance:pickNewOutfit', function()
                     event = 'fivem-appearance:setOutfit',
                     args = {
                         ped = cb[i].ped, 
-						components = cb[i].components, 
+						components = cb[i].components,
 						props = cb[i].props
                     }
                 })
@@ -322,15 +323,15 @@ RegisterNetEvent('fivem-appearance:pickNewOutfit', function()
         else
             Options = {
                 {
-                    title = '< Go Back',
-                    description = 'No Saved Outfits!',
+                    title = Config.Translation.NewOutfit.title,
+                    description = Config.Translation.NewOutfit.desc,
                     event = 'fivem-appearance:clothingShop'
                 }
             }
         end
         lib.registerContext({
             id = 'outfit_menu',
-            title = 'Saved Outfits',
+            title = Config.Translation.NewOutfit.masterTitle,
             options = Options
         })
         lib.showContext('outfit_menu')
@@ -380,7 +381,7 @@ RegisterNetEvent('fivem-appearance:deleteOutfitMenu', function()
         if cb then
             Options = {
                 {
-                    title = '< Go Back',
+                    title = Config.Translation.DeleteOutfit.title,
                     event = 'fivem-appearance:clothingShop'
                 }
             }
@@ -394,15 +395,15 @@ RegisterNetEvent('fivem-appearance:deleteOutfitMenu', function()
         else
             Options = {
                 {
-                    title = '< Go Back',
-                    description = 'No Saved Outfits!',
+                    title = Config.Translation.DeleteOutfit.title,
+                    description = Config.Translation.DeleteOutfit.desc,
                     event = 'fivem-appearance:clothingShop'
                 }
             }
         end
         lib.registerContext({
             id = 'outfit_delete_menu',
-            title = 'Delete Outfits',
+            title = Config.Translation.DeleteOutfit.masterTitle,
             options = Options
         })
         lib.showContext('outfit_delete_menu')

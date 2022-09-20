@@ -2,10 +2,38 @@
 ----------------- https://discord.gg/XJFNyMy3Bv ---------------
 ---------------------------------------------------------------
 
-if Config.OlderESX then
-	if not ESX then TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) end
-else
-	ESX = exports["es_extended"]:getSharedObject()
+local version = nil
+
+if GetResourceState("es_extended") == "started" or GetResourceState("es_extended") == "starting" then
+    version = GetResourceMetadata("es_extended", "version")
+    if version < "1.3.0" then
+        Citizen.CreateThread(function()
+            while ESX == nil do
+                TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+                Citizen.Wait(0)
+            end
+        end)
+
+		Citizen.CreateThread(function()
+			Citizen.Wait(4000)
+			print("^0[^2INFO^0] Script successfully started!")
+			print("^0[^2INFO^0] ESX Version detected: ^2" .. version .. "^0")
+		end)
+    elseif version >= "1.3.0" then
+        ESX = exports["es_extended"]:getSharedObject()
+
+		Citizen.CreateThread(function()
+			Citizen.Wait(4000)
+			print("^0[^2INFO^0] Script successfully started!")
+			print("^0[^2INFO^0] ESX Version detected: ^2" .. version .. "^0")
+		end)
+    else
+        Citizen.CreateThread(function()
+            Citizen.Wait(4000)
+            print("^0[^1ERROR^0] ^3Could not initialized ESX Version!")
+            print("^0[^1ERROR^0] ^3Script may not work!")
+        end)
+	end
 end
 
 MySQL.ready(function()
