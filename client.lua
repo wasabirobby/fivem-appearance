@@ -446,7 +446,6 @@ end)
 
 AddEventHandler('skinchanger:getSkin', function(cb)
     ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(appearance)
-        print(appearance.sex)
         cb(appearance)
     end)
 end)
