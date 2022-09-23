@@ -1,30 +1,28 @@
 fx_version "cerulean"
 game "gta5"
+lua54 'yes'
 
+author 'wasabirobby'
 description 'Wasabi fork of fivem-appearance'
 version '1.0.8'
-
-lua54 'yes'
 
 files {
   'web/dist/index.html',
   'web/dist/assets/*.js',
   'locales/*.json',
-  'peds.json',
-  'tattoos.json'
+  'files/*.json'
 }
 
 ui_page 'web/dist/index.html'
 
 client_scripts {
   'game/dist/index.js',
-  'client.lua'
+  'client/*.lua'
 }
 
 server_scripts {
   '@mysql-async/lib/MySQL.lua',
-  'skinconverter.lua',
-  'server.lua'
+  'server/*.lua'
 }
 
 shared_scripts {

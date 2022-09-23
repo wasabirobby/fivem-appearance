@@ -962,8 +962,8 @@
     var d = global.exports,
         Oe = "0x2746bd9d88c5c5d0",
         Re = Boolean(Number(GetConvar("fivem-appearance:automaticFade", "1"))),
-        Ce = JSON.parse(LoadResourceFile(GetCurrentResourceName(), "tattoos.json")),
-        ae = JSON.parse(LoadResourceFile(GetCurrentResourceName(), "peds.json")),
+        Ce = JSON.parse(LoadResourceFile(GetCurrentResourceName(), "files/tattoos.json")),
+        ae = JSON.parse(LoadResourceFile(GetCurrentResourceName(), "files/peds.json")),
         we = ae.reduce((e, a) => ({
             ...e,
             [GetHashKey(a)]: a

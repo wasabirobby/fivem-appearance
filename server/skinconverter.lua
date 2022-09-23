@@ -1,3 +1,7 @@
+-----------------For support, scripts, and more----------------
+----------------- https://discord.gg/XJFNyMy3Bv ---------------
+---------------------------------------------------------------
+
 RegisterCommand('skinConvert', function(source, args, raw)
 	if source == 0 then
 		TriggerEvent("fivem-appearance:convert")
@@ -15,9 +19,9 @@ AddEventHandler("fivem-appearance:convert", function()
 			for k2,v2 in pairs(v) do
 				if k2 == "skin" then
 					tempSkin = json.decode(v2)
-					
+
 					for nck,ncv in pairs(newSkin.components) do
-						
+
 						if nck == 2 then
 							ncv.drawable = tempSkin.mask_1
 							ncv.texture = tempSkin.mask_2
