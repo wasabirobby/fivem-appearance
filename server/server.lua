@@ -109,40 +109,22 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 	end)
 end)
 
---clotheshop  --barbershop  --tattooshop
 ESX.RegisterServerCallback('fivemappearance:payfee', function(soruce, cb, param)
-	local xPlayer = ESX.GetPlayerFromId(soruce)
-	local money = xPlayer.getMoney()
+    local xPlayer = ESX.GetPlayerFromId(soruce)
+    local money = xPlayer.getMoney()
 
-	if param == 'clotheshop' then
-		local cost = Config.Price.clotheshop
-		if money >= cost then
-			xPlayer.removeMoney(cost)
-			cb(true)
-		else
-			xPlayer.showNotification("You need $"..cost.." money in your pocket.",5000,'success')
-			cb(false)
-		end
-	elseif param == 'barbershop' then
-			local cost = Config.Price.barbershop
-			if money >= cost then
-				xPlayer.removeMoney(cost)
-				cb(true)
-			else
-				xPlayer.showNotification("You need $"..cost.." money in your pocket.",5000,'success')
-				cb(false)
-			end
-	elseif param == 'tattooshop' then
-		local cost = Config.Price.tattooshop
-		if money >= cost then
-			xPlayer.removeMoney(cost)
-			cb(true)
-		else
-	
-			xPlayer.showNotification("You need $"..cost.." money in your pocket.",5000,'success')
-			cb(false)
-		end
-	end
+    if param then
+        local cost = Config.Price[param]
+        if money >= cost then
+            if cost > 0 then
+                xPlayer.removeMoney(cost)
+            end
+            cb(true)
+        else
+            xPlayer.showNotification("You need $"..cost.." money in your pocket.",5000,'success')
+            cb(false)
+        end
+    end
 end)
 
 ESX.RegisterCommand('skin', 'admin', function(xPlayer, args, showError)
