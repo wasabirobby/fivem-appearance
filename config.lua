@@ -6,6 +6,12 @@ Config = {}
 
 Config.Distance = 5.0
 
+Config.Price = {
+	clotheshop = 500,
+	barbershop = 250,
+	tattooshop = 700
+}
+
 Config.Translation = {
 	--| Blips
 	Blip = {
