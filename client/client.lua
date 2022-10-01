@@ -164,7 +164,7 @@ CreateThread(function()
                     exports['fivem-appearance']:startPlayerCustomization(function (appearance)
 						if (appearance) then
 --price check and detect using callback                          
-                            ESX.TriggerServerCallback('fivemappearance:payfee', function(success)
+                            ESX.TriggerServerCallback('fivem-appearance:payfee', function(success)
                                 if success then
                                     TriggerServerEvent('fivem-appearance:save', appearance)
                                     TriggerEvent('esx:restoreLoadout')
@@ -194,7 +194,7 @@ CreateThread(function()
 					}
                     exports['fivem-appearance']:startPlayerCustomization(function (appearance)
 						if (appearance) then
-                            ESX.TriggerServerCallback('fivemappearance:payfee', function(success)
+                            ESX.TriggerServerCallback('fivem-appearance:payfee', function(success)
                                 if success then
                                     TriggerServerEvent('fivem-appearance:save', appearance)
                                     TriggerEvent('esx:restoreLoadout')
@@ -268,7 +268,7 @@ RegisterNetEvent('fivem-appearance:clothingMenu', function()
 	}
 	exports['fivem-appearance']:startPlayerCustomization(function (appearance)
 		if (appearance) then
-			ESX.TriggerServerCallback('fivemappearance:payfee', function(success)
+			ESX.TriggerServerCallback('fivem-appearance:payfee', function(success)
                 if success then
                     TriggerServerEvent('fivem-appearance:save', appearance)
                     TriggerEvent('esx:restoreLoadout')
