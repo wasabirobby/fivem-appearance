@@ -467,6 +467,16 @@ RegisterCommand('propfix', function()
     end
 end)
 
+-- cd_multicharacter compatibility
+RegisterNetEvent('skinchanger:loadSkin2')
+AddEventHandler('skinchanger:loadSkin2', function(ped, skin)
+    if not skin.model then skin.model = 'mp_m_freemode_01' end
+    	exports['fivem-appearance']:setPedAppearance(ped, skin)
+    if cb ~= nil then
+        cb()
+    end
+end)
+
 -- esx_skin and skinchanger compatibility
 
 AddEventHandler('skinchanger:getSkin', function(cb)
