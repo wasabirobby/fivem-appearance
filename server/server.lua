@@ -109,7 +109,7 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 	end)
 end)
 
-ESX.RegisterServerCallback('fivemappearance:payfee', function(soruce, cb, param)
+ESX.RegisterServerCallback('fivem-appearance:payfee', function(soruce, cb, param)
     local xPlayer = ESX.GetPlayerFromId(soruce)
     local money = xPlayer.getMoney()
 
