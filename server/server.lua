@@ -118,11 +118,11 @@ ESX.RegisterServerCallback('fivem-appearance:payfee', function(source, cb, param
         if money >= cost then
             if cost > 0 then
                 xPlayer.removeMoney(cost)
-				xPlayer.showNotification("You have payed $"..cost..".")
+                TriggerClientEvent('fivem-appearance:notify', source, 'Success', 'You have paid $'..cost, 'success')
             end
             cb(true)
         else
-            xPlayer.showNotification("You need $"..cost.." money in your pocket.")
+            TriggerClientEvent('fivem-appearance:notify', source, 'Insufficient Funds', 'You need $'..cost..' dollars in your pocket!', 'error')
             cb(false)
         end
     end
