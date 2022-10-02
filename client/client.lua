@@ -218,6 +218,25 @@ CreateThread(function()
     end
 end)
 
+RegisterNetEvent('fivem-appearance:notify', function(title, desc, style, icon)
+    if icon then
+        lib.notify({
+            title = title,
+            description = desc,
+            duration = 3500,
+            icon = icon,
+            type = style
+        })
+    else
+        lib.notify({
+            title = title,
+            description = desc,
+            duration = 3500,
+            type = style
+        })
+    end
+end)
+
 RegisterNetEvent('fivem-appearance:clothingShop', function()
 	lib.registerContext({
 		id = 'clothing_menu',
