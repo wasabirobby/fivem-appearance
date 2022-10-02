@@ -28,7 +28,7 @@ AddEventHandler('esx:onPlayerDeath', function(data)
     closeMenu()
 end)
 
-function closeMenu()
+closeMenu = function()
     RenderScriptCams(false, false, 0, true, true)
     DestroyAllCams(true)
     DisplayRadar(true)
@@ -58,17 +58,17 @@ end
 CreateThread(function()
     for i=1, #Config.ClothingShops do
         if Config.ClothingShops[i].blip then
-            CreateBlip(Config.ClothingShops[i].coords, 73, 47, Config.Translation.Blip.clothingShop, 0.7)
+            CreateBlip(Config.ClothingShops[i].coords, Config.ClothingShops[i].type, Config.ClothingShops[i].color, Config.Translation.Blip.clothingShop, Config.ClothingShops[i].scale)
         end
     end
     for i=1, #Config.BarberShops do
         if Config.BarberShops[i].blip then
-            CreateBlip(Config.BarberShops[i].coords, 71, 47, Config.Translation.Blip.barberShop, 0.7)
+            CreateBlip(Config.BarberShops[i].coords, Config.BarberShops[i].type, Config.BarberShops[i].color, Config.Translation.Blip.barberShop, Config.BarberShops[i].scale)
         end
     end
     for i=1, #Config.TattooShops do
         if Config.TattooShops[i].blip then
-            CreateBlip(Config.TattooShops[i].coords, 75, 1, Config.Translation.Blip.tattooShop, 0.7)
+            CreateBlip(Config.TattooShops[i].coords, Config.TattooShops[i].type, Config.TattooShops[i].color, Config.Translation.Blip.tattooShop, Config.TattooShops[i].scale)
         end
     end
 end)
@@ -143,11 +143,11 @@ CreateThread(function()
         if CurrentAction ~= nil then
             sleep = 0
             if IsControlPressed(1, 38) then
---get current model before modification so we can revert if plyaer doesnot have money
+                --get current model before modification so we can revert if plyaer doesnot have money
                 local playerPed = PlayerPedId()
 		        local currentPedModel = exports['fivem-appearance']:getPedModel(playerPed)
                 local currentappearance = exports['fivem-appearance']:getPedAppearance(playerPed)
-                
+
                 Wait(500)
                 if CurrentAction == 'clothingMenu' then
                     TriggerEvent('fivem-appearance:clothingShop')
@@ -163,20 +163,20 @@ CreateThread(function()
                     }
                     exports['fivem-appearance']:startPlayerCustomization(function (appearance)
 						if (appearance) then
---price check and detect using callback                          
+                            --price check and detect using callback                          
                             ESX.TriggerServerCallback('fivem-appearance:payfee', function(success)
                                 if success then
                                     TriggerServerEvent('fivem-appearance:save', appearance)
                                     TriggerEvent('esx:restoreLoadout')
 							        ESX.SetPlayerData('ped', PlayerPedId())
                                 else
---revert character which we already save before modification                                 
+                                    --revert character which we already save before modification                                 
                                     exports['fivem-appearance']:setPlayerAppearance(currentappearance)
                                     TriggerServerEvent('fivem-appearance:save',currentappearance)
                                     TriggerEvent('esx:restoreLoadout')
 							        ESX.SetPlayerData('ped', PlayerPedId())
-                                end   
-                            end, "barbershop")	
+                                end
+                            end, "barbershop")
 						else
                             TriggerEvent('esx:restoreLoadout')
 							ESX.SetPlayerData('ped', PlayerPedId())
@@ -198,14 +198,13 @@ CreateThread(function()
                                 if success then
                                     TriggerServerEvent('fivem-appearance:save', appearance)
                                     TriggerEvent('esx:restoreLoadout')
-							--        ESX.SetPlayerData('ped', PlayerPedId())
+							        --ESX.SetPlayerData('ped', PlayerPedId())
                                 else
-                                   
                                     exports['fivem-appearance']:setPlayerAppearance(currentappearance)
                                     TriggerServerEvent('fivem-appearance:save',currentappearance)
                                     TriggerEvent('esx:restoreLoadout')
-							--        ESX.SetPlayerData('ped', PlayerPedId())
-                                end   
+							        --ESX.SetPlayerData('ped', PlayerPedId())
+                                end
                             end, "tattooshop")
 						else
 							ESX.SetPlayerData('ped', PlayerPedId())

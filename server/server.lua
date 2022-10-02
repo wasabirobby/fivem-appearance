@@ -109,8 +109,8 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 	end)
 end)
 
-ESX.RegisterServerCallback('fivem-appearance:payfee', function(soruce, cb, param)
-    local xPlayer = ESX.GetPlayerFromId(soruce)
+ESX.RegisterServerCallback('fivem-appearance:payfee', function(source, cb, param)
+    local xPlayer = ESX.GetPlayerFromId(source)
     local money = xPlayer.getMoney()
 
     if param then
@@ -118,10 +118,11 @@ ESX.RegisterServerCallback('fivem-appearance:payfee', function(soruce, cb, param
         if money >= cost then
             if cost > 0 then
                 xPlayer.removeMoney(cost)
+				xPlayer.showNotification("You have payed $"..cost..".")
             end
             cb(true)
         else
-            xPlayer.showNotification("You need $"..cost.." money in your pocket.",5000,'success')
+            xPlayer.showNotification("You need $"..cost.." money in your pocket.")
             cb(false)
         end
     end
