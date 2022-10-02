@@ -1,12 +1,12 @@
 {
   "modal": {
     "save": {
-      "title": "Guardar personalización",
-      "description": "Seguirás siendo feo"
+      "title": "Confirmar cambios",
+      "description": "Tendrás este aspecto"
     },
     "exit": {
       "title": "Salir de la personalización",
-      "description": "No se guardarán los cambios."
+      "description": "No se guardarán los cambios"
     },
     "accept": "Si",
     "decline": "No"
@@ -64,7 +64,7 @@
     },
     "chin": {
       "title": "Barbilla",
-      "lowering": "Pera",
+      "lowering": "Bajada",
       "length": "Largo",
       "size": "Tamaño",
       "hole": "Tamaño del agujero"
@@ -93,7 +93,7 @@
     "makeUp": "Maquillaje",
     "blush": "Rubor",
     "complexion": "Tez",
-    "sunDamage": "Daño del sol",
+    "sunDamage": "Quemaduras",
     "lipstick": "Lápiz labial",
     "moleAndFreckles": "Lunares y pecas",
     "chestHair": "Pelo en el pecho",
@@ -103,7 +103,7 @@
   "components": {
     "title": "Ropa",
     "drawable": "Modelo",
-    "texture": "Textura",
+    "texture": "Estilo",
     "mask": "Máscara",
     "upperBody": "Manos",
     "lowerBody": "Piernas",
@@ -112,7 +112,7 @@
     "scarfAndChains": "Bufandas y cadenas",
     "shirt": "Camisa",
     "bodyArmor": "Armadura",
-    "decals": "Calcomanías",
+    "decals": "Pegatinas",
     "jackets": "Chaquetas"
   },
   "props": {
@@ -121,7 +121,7 @@
     "texture": "Textura",
     "hats": "Sombreros y cascos",
     "glasses": "Gafas",
-    "ear": "Pendites",
+    "ear": "Pendientes",
     "watches": "Relojes",
     "bracelets": "Brazaletes"
   },
