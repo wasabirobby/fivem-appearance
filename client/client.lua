@@ -251,6 +251,7 @@ RegisterNetEvent('fivem-appearance:clothingShop', function()
 	})
 	lib.showContext('clothing_menu')
 end)
+
 RegisterNetEvent('fivem-appearance:clothingMenu', function()
     local playerPed = PlayerPedId()
     local currentPedModel = exports['fivem-appearance']:getPedModel(playerPed)
@@ -273,12 +274,11 @@ RegisterNetEvent('fivem-appearance:clothingMenu', function()
                     TriggerEvent('esx:restoreLoadout')
                     ESX.SetPlayerData('ped', PlayerPedId())
                 else
-                
                     exports['fivem-appearance']:setPlayerAppearance(currentappearance)
                     TriggerServerEvent('fivem-appearance:save',currentappearance)
                     TriggerEvent('esx:restoreLoadout')
                     ESX.SetPlayerData('ped', PlayerPedId())
-                end   
+                end
             end, "clotheshop")
         else
 			ESX.SetPlayerData('ped', PlayerPedId()) -- Fix for esx legacy
@@ -477,7 +477,6 @@ AddEventHandler('skinchanger:loadSkin2', function(ped, skin)
 end)
 
 -- esx_skin and skinchanger compatibility
-
 AddEventHandler('skinchanger:getSkin', function(cb)
     while not ESX.PlayerLoaded do
         Wait(1000)
