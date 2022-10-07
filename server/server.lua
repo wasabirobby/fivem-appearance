@@ -82,7 +82,6 @@ AddEventHandler("fivem-appearance:deleteOutfit", function(id)
 end)
 
 -- ESX Skin Compatibility
-
 getGender = function(model)
     if model == 'mp_f_freemode_01' then
         return 1
