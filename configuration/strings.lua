@@ -26,7 +26,6 @@ Strings = {
 
     -- Browse/Delete outfits & Wardrobe
     wardrobe_title = 'Wardrobe',
-    browse_outfits_title = 'Saved Outfits',
     delete_outfits_title = 'Delete Outfits',
     go_back_title = '< Go Back',
     go_back_desc = 'No Saved Outfits!',
