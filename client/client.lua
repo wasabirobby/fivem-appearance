@@ -255,6 +255,12 @@ RegisterCommand('propfix', function()
     end
 end)
 
+RegisterCommand('reloadchar', function()
+    ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(appearance)
+        exports['fivem-appearance']:setPlayerAppearance(appearance)
+    end)
+end)
+
 --cd_multicharacter compatibility
 RegisterNetEvent('skinchanger:loadSkin2')
 AddEventHandler('skinchanger:loadSkin2', function(ped, skin)
