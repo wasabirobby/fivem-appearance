@@ -146,7 +146,7 @@ openWardrobe = function()
     if outfits then
         Options = {}
         for i=1, #outfits do
-            outfits[#outfits + 1] = {
+            Options[#Options + 1] = {
                 title = outfits[i].name,
                 event = 'fivem-appearance:setOutfit',
                 args = {
