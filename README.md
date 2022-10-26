@@ -1,3 +1,4 @@
+![GitHub all releases](https://img.shields.io/github/downloads/wasabirobby/fivem-appearance/total?style=flat-square)
 # Documentation:
 [Gitbook - fivem-appearance](https://wasabirobby.gitbook.io/wasabi-scripts/scripts/fivem-appearance)
 
