@@ -27,9 +27,10 @@ createBlip = function(coords, sprite, colour, text, scale)
     SetBlipColour(blip, colour)
     SetBlipAsShortRange(blip, true)
     SetBlipScale(blip, scale)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(text)
-    EndTextCommandSetBlipName(blip)
+	AddTextEntry(text, text)
+	BeginTextCommandSetBlipName(text)
+	EndTextCommandSetBlipName(blip)
+    return blip
 end
 
 consolidateShops = function()
@@ -176,25 +177,68 @@ exports('openWardrobe', openWardrobe)
 
 -- ESX Skin/Skin Changer compatibility
 convertClothes = function(outfit)
-    local data = {
-        Components = {
-            { drawable = outfit.mask_1 or 0, texture = outfit.mask_2 or 0, component_id = 1 },
-            { drawable = outfit.arms or 0, texture = outfit.arms_2 or 0, component_id = 3 },
-            { drawable = outfit.pants_1 or 0, texture = outfit.pants_2 or 0, component_id = 4 },
-            { drawable = outfit.shoes_1 or 0, texture = outfit.shoes_2 or 0, component_id = 6 },
-            { drawable = outfit.chain_1 or 0, texture = outfit.chain_2 or 0, component_id = 7 },
-            { drawable = outfit.tshirt_1 or 0, texture = outfit.tshirt_2 or 0, component_id = 8 },
-            { drawable = outfit.bproof_1 or 0, texture = outfit.bproof_2 or 0, component_id = 9 },
-            { drawable = outfit.decals_1 or 0, texture = outfit.decals_2 or 0, component_id = 10 },
-            { drawable = outfit.torso_1 or 0, texture = outfit.torso_2 or 0, component_id = 11 },
-        },
-        Props = {
-            { drawable = outfit.helmet_1 or -1, texture = outfit.helmet_2 or 0, prop_id = 0 },
-            { drawable = outfit.glasses_1 or -1, texture = outfit.glasses_2 or 0, prop_id = 1 },
-            { drawable = outfit.ears_1 or -1, texture = outfit.ears_2 or 0, prop_id = 2 },
-            { drawable = outfit.watches_1 or -1, texture = outfit.watches_2 or 0, prop_id = 6 },
-            { drawable = outfit.bracelets_1 or -1, texture = outfit.bracelets_2 or 0, prop_id = 7 },
-        }
-    }
+    local data = {}
+    data.Components = exports['fivem-appearance']:getPedComponents(cache.ped)
+    data.Props = exports['fivem-appearance']:getPedProps(cache.ped)
+    for i=1, #data.Components do
+        if data.Components[i].component_id == 1 and outfit.mask_1 then
+            data.Components[i].drawable = outfit.mask_1
+            data.Components[i].texture = (outfit.mask_2 or 0)
+        end
+        if data.Components[i].component_id == 3 and outfit.arms then
+            data.Components[i].drawable = outfit.arms
+            data.Components[i].texture = (outfit.arms_2 or 0)
+        end
+        if data.Components[i].component_id == 4 and outfit.pants_1 then
+            data.Components[i].drawable = outfit.pants_1
+            data.Components[i].texture = (outfit.pants_2 or 0)
+        end
+        if data.Components[i].component_id == 6 and outfit.shoes_1 then
+            data.Components[i].drawable = outfit.shoes_1
+            data.Components[i].texture = (outfit.shoes_2 or 0)
+        end
+        if data.Components[i].component_id == 7 and outfit.chain_1 then
+            data.Components[i].drawable = outfit.chain_1
+            data.Components[i].texture = (outfit.chain_2 or 0)
+        end
+        if data.Components[i].component_id == 8 and outfit.tshirt_1 then
+            data.Components[i].drawable = outfit.tshirt_1
+            data.Components[i].texture = (outfit.tshirt_2 or 0)
+        end
+        if data.Components[i].component_id == 9 and outfit.bproof_1 then
+            data.Components[i].drawable = outfit.bproof_1
+            data.Components[i].texture = (outfit.bproof_2 or 0)
+        end
+        if data.Components[i].component_id == 10 and outfit.decals_1 then
+            data.Components[i].drawable = outfit.decals_1
+            data.Components[i].texture = (outfit.decals_2 or 0)
+        end
+        if data.Components[i].component_id == 11 and outfit.torso_1 then
+            data.Components[i].drawable = outfit.torso_1
+            data.Components[i].texture = (outfit.torso_2 or 0)
+        end
+    end
+    for i=1, #data.Props do
+        if data.prop_id == 0 and outfit.helmet_1 then
+            data.Props[i].drawable = outfit.helmet_1
+            data.Props[i].texture = (outfit.helmet_2 or 0)
+        end
+        if data.prop_id == 1 and outfit.glasses_1 then
+            data.Props[i].drawable = outfit.glasses_1
+            data.Props[i].texture = (outfit.glasses_2 or 0)
+        end
+        if data.prop_id == 2 and outfit.ears_1 then
+            data.Props[i].drawable = outfit.ears_1
+            data.Props[i].texture = (outfit.ears_2 or 0)
+        end
+        if data.prop_id == 6 and outfit.watches_1 then
+            data.Props[i].drawable = outfit.watches_1
+            data.Props[i].texture = (outfit.watches_2 or 0)
+        end
+        if data.prop_id == 7 and outfit.bracelets_1 then
+            data.Props[i].drawable = outfit.bracelets_1
+            data.Props[i].texture = (outfit.bracelets_2 or 0)
+        end
+    end
     return data
 end
