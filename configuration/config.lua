@@ -267,7 +267,7 @@ Config.ClothingShops = {
 		distance = 7, 
 		price = false, 
 	},
-	
+
 	{
 		blip = {
 			enabled = false, 
@@ -444,7 +444,7 @@ Config.TattooShops = {
 		distance = 7,
 		price = 350,
 	},
-	
+
 	{
 		blip = {
 			enabled = true,

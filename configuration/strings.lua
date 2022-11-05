@@ -3,14 +3,14 @@ Strings = {
     clothing_menu = '[E] - Change Clothing',
     barber_menu = '[E] - Change Hair/Face',
     tattoo_menu = '[E] - Change Tattoos',
-    
+
     -- Notifications --
     success = 'Success',
     success_desc = 'You have successfully paid $%s for a new look!',
 
     no_funds = 'Lacking funds',
     no_funds_desc = 'You do not have enough funds in the bank for this',
-    
+
     -- Menus --
 
     -- Main clothing shop menu
@@ -29,12 +29,8 @@ Strings = {
     delete_outfits_title = 'Delete Outfits',
     go_back_title = '< Go Back',
     go_back_desc = 'No Saved Outfits!',
-    
+
     -- Other
     skin_command_help = 'Change Skin',
     skin_command_arg_help = 'Player ID'
-
-
-
-
 }
