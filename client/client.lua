@@ -42,10 +42,8 @@ AddEventHandler('fivem-appearance:skinCommand', function()
 		if (appearance) then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			ESX.SetPlayerData('ped', PlayerPedId())
-			TriggerEvent('esx:restoreLoadout')
 		else
 			ESX.SetPlayerData('ped', PlayerPedId())
-			TriggerEvent('esx:restoreLoadout')
 		end
 	end, config)
 end)
@@ -285,7 +283,6 @@ RegisterNetEvent('skinchanger:loadSkin')
 AddEventHandler('skinchanger:loadSkin', function(skin, cb)
 	if not skin.model then skin.model = 'mp_m_freemode_01' end
 	exports['fivem-appearance']:setPlayerAppearance(skin)
-	TriggerEvent('esx:restoreLoadout')
 	if cb ~= nil then
 		cb()
 	end
@@ -314,12 +311,10 @@ AddEventHandler('esx_skin:openSaveableMenu', function(submitCb, cancelCb)
 		if (appearance) then
 			TriggerServerEvent('fivem-appearance:save', appearance)
 			ESX.SetPlayerData('ped', PlayerPedId())
-			TriggerEvent('esx:restoreLoadout')
 			if submitCb then submitCb() end
 		else
 			if cancelCb then cancelCb() end
 			ESX.SetPlayerData('ped', PlayerPedId())
-			TriggerEvent('esx:restoreLoadout')
 		end
 	end, config)
 end)
