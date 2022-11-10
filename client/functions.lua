@@ -110,7 +110,6 @@ openShop = function(store, price)
                         })
                         TriggerServerEvent('fivem-appearance:save', appearance)
                         InMenu = false
-                        TriggerEvent('esx:restoreLoadout')
                         ESX.SetPlayerData('ped', PlayerPedId())
                     else
                         lib.notify({
@@ -123,17 +122,14 @@ openShop = function(store, price)
                         exports['fivem-appearance']:setPlayerAppearance(currentAppearance)
                         InMenu = false
                         TriggerServerEvent('fivem-appearance:save',currentAppearance)
-                        TriggerEvent('esx:restoreLoadout')
                         ESX.SetPlayerData('ped', PlayerPedId())
                     end
                 else
                     TriggerServerEvent('fivem-appearance:save', appearance)
                     InMenu = false
-                    TriggerEvent('esx:restoreLoadout')
                     ESX.SetPlayerData('ped', PlayerPedId())
                 end
             else
-                TriggerEvent('esx:restoreLoadout')
                 ESX.SetPlayerData('ped', PlayerPedId())
                 inMenu = false
             end
