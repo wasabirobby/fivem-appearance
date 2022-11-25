@@ -2,8 +2,9 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
-fx_version "cerulean"
-game "gta5"
+fx_version 'cerulean'
+use_experimental_fxv2_oal 'yes'
+game 'gta5'
 lua54 'yes'
 
 author 'wasabirobby'
@@ -19,6 +20,11 @@ files {
 
 ui_page 'web/dist/index.html'
 
+shared_scripts {
+  '@ox_lib/init.lua',
+  'configuration/*.lua'
+}
+
 client_scripts {
   'game/dist/index.js',
   'client/*.lua'
@@ -27,11 +33,6 @@ client_scripts {
 server_scripts {
   '@oxmysql/lib/MySQL.lua',
   'server/*.lua'
-}
-
-shared_scripts {
-  '@ox_lib/init.lua',
-  'configuration/*.lua'
 }
 
 dependencies {

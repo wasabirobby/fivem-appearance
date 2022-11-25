@@ -1,3 +1,7 @@
+-----------------For support, scripts, and more----------------
+--------------- https://discord.gg/wasabiscripts  -------------
+---------------------------------------------------------------
+
 Strings = {
     -- Text UI strings --
     clothing_menu = '[E] - Change Clothing',
