@@ -74,7 +74,7 @@ AddEventHandler('fivem-appearance:setOutfit', function(data)
 end)
 
 RegisterNetEvent('fivem-appearance:saveOutfit', function()
-    local input = lib.inputDialog('Save Outfit', {'Outfit Name'})
+    local input = lib.inputDialog(Strings.save_outfit_title, {Strings.save_outfit_info})
     if input then
         local name = input[1]
         local playerPed = PlayerPedId()

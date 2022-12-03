@@ -20,6 +20,7 @@ Strings = {
     browse_outfits_title = 'Browse Outfits',
     browse_outfits_desc = 'Browse saved outfits',
     save_outfit_title = 'Save Outfit',
+    save_outfit_info = 'Outfit Name',
     save_outfit_desc = 'Save current outfit',
     delete_outfit_title = 'Delete Outfits',
     delete_outfit_desc = 'Delete a saved outfit',
