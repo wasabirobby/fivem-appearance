@@ -385,10 +385,13 @@
                 },
                 props: {
                     male: [
-                        [1, 0]
+                        [1, 0],
+                        // 12 - hat
+                        [12, 11]
                     ],
                     female: [
-                        [1, 0]
+                        [1, 0],
+                        [12, 11]
                     ]
                 }
             },
@@ -409,7 +412,7 @@
                 },
                 props: {
                     male: [
-                        [11, 252],
+                        [11, 178],
                         [3, 15],
                         [8, 15],
                         [10, 0],
@@ -441,8 +444,8 @@
                 },
                 props: {
                     male: [
-                        [4, 61],
-                        [6, 34]
+                        [4, 32],
+                        [6, 49]
                     ],
                     female: [
                         [4, 15],
@@ -817,6 +820,7 @@
                     } = _[P];
                     V === v && SetPedComponentVariation(p, v, U, K, 2)
                 }
+                buki(J());
             } else
                 for (let y = 0; y < c.length; y++) {
                     let [v] = c[y];
@@ -829,6 +833,7 @@
                         V === v && SetPedComponentVariation(p, v, U, K, 2)
                     }
                 }
+                buki(J());
         TaskPlayAnim(p, r, n, 3, 3, i, l, 0, !1, !1, !1)
     }
     async function me(e) {
@@ -848,7 +853,12 @@
         if (_)
             for (let p = 0; p < i.length; p++) {
                 let [u, y] = i[p];
-                SetPedComponentVariation(c, u, y, 0, 2)
+                if (u != 12) {
+                    SetPedComponentVariation(c, u, y, 0, 2)
+                }
+                else{
+                    SetPedPropIndex(c,0,y,0,true)
+                }
             } else
                 for (let p = 0; p < s.length; p++) {
                     let [u, y] = s[p];
@@ -1187,6 +1197,42 @@
         let _ = PlayerPedId();
         te(_, o), re(_, t), r && M(_, r), n && S(_, n), l && G(_, l), i && T(_, i), s && N(_, s), c && I(_, c)
     }
+
+
+    // ADDON FIX FOR REMOVE HAT
+    function serbia(e, a) {
+        if (!a) return;
+        let {
+            prop_id: o,
+            drawable: t,
+            texture: r
+        } = a;
+        if (o==0) {
+            t === -1 ? ClearPedProp(e, o) : SetPedPropIndex(e, o, t, r, !1)
+        }
+    }
+
+    function kk(e, a) {
+        !a || a.forEach(o => serbia(e, o))
+    }
+
+    async function buki(e) {
+        if (!e) return;
+        let {
+            model: a,
+            components: o,
+            props: t,
+            headBlend: r,
+            faceFeatures: n,
+            headOverlays: l,
+            hair: i,
+            eyeColor: s,
+            tattoos: c
+        } = e;
+        kk(PlayerPedId(), t);
+    }
+
+    // END
 
     function ze(e, a) {
         if (!a) return;
