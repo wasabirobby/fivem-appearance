@@ -289,42 +289,14 @@ AddEventHandler('skinchanger:loadSkin', function(skin, cb)
 end)
 
 AddEventHandler('skinchanger:loadDefaultModel', function(loadMale, cb)
-    LoadDefaultModel(loadMale, cb)
-end)
-
-function LoadDefaultModel(malePed, cb)
-    local playerPed = PlayerPedId()
-    local characterModel
-
-    if malePed then
-        characterModel = `mp_m_freemode_01`
+    if loadMale then
+        TriggerEvent('skinchanger:loadSkin',Config.DefaultSkin)
     else
-        characterModel = `mp_f_freemode_01`
+        local skin = Config.DefaultSkin
+        skin.model = 'mp_f_freemode_01'
+        TriggerEvent('skinchanger:loadSkin',skin)
     end
-
-    RequestModel(characterModel)
-
-    CreateThread(function()
-        while not HasModelLoaded(characterModel) do
-            RequestModel(characterModel)
-            Wait(0)
-        end
-
-        if IsModelInCdimage(characterModel) and IsModelValid(characterModel) then
-            SetPlayerModel(PlayerId(), characterModel)
-            SetPedDefaultComponentVariation(playerPed)
-        end
-
-        SetModelAsNoLongerNeeded(characterModel)
-
-        if cb ~= nil then
-            cb()
-        end
-
-        TriggerEvent('skinchanger:modelLoaded')
-    end)
-end
-
+end)
 
 RegisterNetEvent('skinchanger:loadClothes')
 AddEventHandler('skinchanger:loadClothes', function(skin, clothes)
