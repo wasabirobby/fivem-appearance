@@ -115,6 +115,8 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 		}
 		if user.skin then
 			appearance = json.decode(user.skin)
+		elseif user.skin == nil then
+			appearance = Config.DefaultSkin
 		end
 		appearance.sex = getGender(appearance.model)
 		cb(appearance, jobSkin)
