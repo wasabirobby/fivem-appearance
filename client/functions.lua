@@ -61,6 +61,8 @@ end
 openShop = function(store, price)
     local ped = cache.ped
     local currentAppearance = exports['fivem-appearance']:getPedAppearance(ped)
+    local tetovaze = exports['fivem-appearance']:getPedTattoos(ped)
+    currentAppearance.tattoos = tetovaze
     local config = {}
     InMenu = true
     if store == 'clothing' then
@@ -98,6 +100,9 @@ openShop = function(store, price)
         end
         exports['fivem-appearance']:startPlayerCustomization(function (appearance)
             if (appearance) then
+		if json.encode(appearance.tattoos) == '[]' then
+                    appearance.tattoos = tetovaze
+                end
                 if price then
                     local paid = lib.callback.await('fivem-appearance:payFunds', 100, price)                    
                     if paid then
