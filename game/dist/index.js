@@ -862,7 +862,12 @@
             } else
                 for (let p = 0; p < s.length; p++) {
                     let [u, y] = s[p];
-                    SetPedComponentVariation(c, u, y, 0, 2)
+                    if (u != 12) {
+                        SetPedComponentVariation(c, u, y, 0, 2)
+                    }
+                    else{
+                        SetPedPropIndex(c,0,y,0,true)
+                    }
                 }
         TaskPlayAnim(c, t, r, 3, 3, l, n, 0, !1, !1, !1)
     }
