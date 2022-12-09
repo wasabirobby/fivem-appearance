@@ -21,16 +21,15 @@ addCommas = function(n)
 								  :gsub(",(%-?)$","%1"):reverse()
 end
 
-createBlip = function(coords, sprite, colour, text, scale)
-    local blip = AddBlipForCoord(coords)
-    SetBlipSprite(blip, sprite)
-    SetBlipColour(blip, colour)
-    SetBlipAsShortRange(blip, true)
-    SetBlipScale(blip, scale)
-	AddTextEntry(text, text)
+createBlip = function(coords, sprite, color, text, scale)
+	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+	SetBlipSprite(blip, sprite)
+	SetBlipDisplay(blip, 4)
+	SetBlipScale(blip, scale)
+	SetBlipColour(blip, color)
+	SetBlipAsShortRange(blip, true)
 	BeginTextCommandSetBlipName(text)
 	EndTextCommandSetBlipName(blip)
-    return blip
 end
 
 consolidateShops = function()
