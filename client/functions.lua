@@ -74,7 +74,8 @@ openShop = function(store, price)
                 faceFeatures = false,
                 headOverlays = false,
                 components = true,
-                props = true
+                props = true,
+                tattoos = false
             }
         elseif store == 'barber' then
             config = {
