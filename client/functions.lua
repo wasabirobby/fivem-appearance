@@ -28,8 +28,8 @@ createBlip = function(coords, sprite, color, text, scale)
 	SetBlipScale(blip, scale)
 	SetBlipColour(blip, color)
 	SetBlipAsShortRange(blip, true)
-	BeginTextCommandSetBlipName(text)
-	EndTextCommandSetBlipName(blip)
+	BeginTextCommandSetBlipName(text.blip)
+	EndTextCommandSetBlipName(text.blip)
 end
 
 consolidateShops = function()
