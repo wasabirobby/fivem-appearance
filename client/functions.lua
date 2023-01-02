@@ -194,6 +194,10 @@ convertClothes = function(outfit)
             data.Components[i].drawable = outfit.pants_1
             data.Components[i].texture = (outfit.pants_2 or 0)
         end
+        if data.Components[i].component_id == 5 and outfit.bags_1 then
+            data.Components[i].drawable = outfit.bags_1
+            data.Components[i].texture = (outfit.bags_2 or 0)
+        end
         if data.Components[i].component_id == 6 and outfit.shoes_1 then
             data.Components[i].drawable = outfit.shoes_1
             data.Components[i].texture = (outfit.shoes_2 or 0)
@@ -220,7 +224,7 @@ convertClothes = function(outfit)
         end
     end
     for i=1, #data.Props do
-        if data.prop_id == 0 and outfit.helmet_1 then
+        if data.Props[i].prop_id == 0 and outfit.helmet_1 then
             data.Props[i].drawable = outfit.helmet_1
             data.Props[i].texture = (outfit.helmet_2 or 0)
         end
@@ -228,15 +232,15 @@ convertClothes = function(outfit)
             data.Props[i].drawable = outfit.glasses_1
             data.Props[i].texture = (outfit.glasses_2 or 0)
         end
-        if data.prop_id == 2 and outfit.ears_1 then
+        if data.Props[i].prop_id == 2 and outfit.ears_1 then
             data.Props[i].drawable = outfit.ears_1
             data.Props[i].texture = (outfit.ears_2 or 0)
         end
-        if data.prop_id == 6 and outfit.watches_1 then
+        if data.Props[i].prop_id == 6 and outfit.watches_1 then
             data.Props[i].drawable = outfit.watches_1
             data.Props[i].texture = (outfit.watches_2 or 0)
         end
-        if data.prop_id == 7 and outfit.bracelets_1 then
+        if data.Props[i].prop_id == 7 and outfit.bracelets_1 then
             data.Props[i].drawable = outfit.bracelets_1
             data.Props[i].texture = (outfit.bracelets_2 or 0)
         end
