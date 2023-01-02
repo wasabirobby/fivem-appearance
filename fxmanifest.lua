@@ -8,7 +8,7 @@ lua54 'yes'
 
 author 'wasabirobby'
 description 'Wasabi fork of fivem-appearance'
-version '1.2.8'
+version '1.2.9'
 
 files {
   'web/dist/index.html',
