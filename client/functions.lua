@@ -22,14 +22,15 @@ addCommas = function(n)
 end
 
 createBlip = function(coords, sprite, color, text, scale)
-	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-	SetBlipSprite(blip, sprite)
-	SetBlipDisplay(blip, 4)
-	SetBlipScale(blip, scale)
-	SetBlipColour(blip, color)
-	SetBlipAsShortRange(blip, true)
-	BeginTextCommandSetBlipName(text.blip)
-	EndTextCommandSetBlipName(text.blip)
+    local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+    SetBlipSprite(blip, sprite)
+    SetBlipDisplay(blip, 4)
+    SetBlipScale(blip, scale)
+    SetBlipColour(blip, color)
+    SetBlipAsShortRange(blip, true)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(text)
+    EndTextCommandSetBlipName(blip)
 end
 
 consolidateShops = function()
