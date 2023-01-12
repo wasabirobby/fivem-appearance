@@ -1,0 +1,157 @@
+{
+  "modal": {
+    "save": {
+      "title": "Änderungen übernehmen",
+      "description": "Du hast dich kein bisschen verändert..."
+    },
+    "exit": {
+      "title": "Anpassungsbereich verlassen",
+      "description": "Keinerlei Änderungen gespeichert."
+    },
+    "accept": "Ja",
+    "decline": "Nein"
+  },
+
+  "ped": {
+    "title": "Ped",
+    "model": "Modell"
+  },
+
+  "headBlend": {
+    "title": "Vererbung",
+    "shape": {
+      "title": "Gesicht",
+      "firstOption": "Vater",
+      "secondOption": "Mutter",
+      "mix": "Ähnlichkeit"
+    },
+
+    "skin": {
+      "title": "Hautfarbe",
+      "firstOption": "Vater",
+      "secondOption": "Mutter",
+      "mix": "Ähnlichkeit"
+    }
+  },
+
+  "faceFeatures": {
+    "title": "Gesichtsmerkmale",
+    "nose": {
+      "title": "Nase",
+      "width": "Breite",
+      "height": "Höhe",
+      "size": "Größe",
+      "boneHeight": "Höhe Nasenbein",
+      "boneTwist": "Versatz Nasenbein",
+      "peakHeight": "Höhe Nasenspitze"
+    },
+
+    "eyebrows": {
+      "title": "Augenbrauen",
+      "height": "Höhe",
+      "depth": "Tiefe"
+    },
+
+    "cheeks": {
+      "title": "Wangen",
+      "boneHeight": "Höhe Wangenknochen",
+      "boneWidth": "Breite Wangenknochen",
+      "width": "Breite"
+    },
+
+    "eyesAndMouth": {
+      "title": "Augen / Mundbereich",
+      "eyesOpening": "Augengröße",
+      "lipsThickness": "Lippendicke"
+    },
+
+    "jaw": {
+      "title": "Kiefer",
+      "width": "Breite",
+      "size": "Größe"
+    },
+
+    "chin": {
+      "title": "Kinn",
+      "lowering": "Höhe",
+      "length": "Länge",
+      "size": "Größe",
+      "hole": "Kerbengröße"
+    },
+
+    "neck": {
+      "title": "Nacken",
+      "thickness": "Dicke"
+    }
+  },
+
+  "headOverlays": {
+    "title": "Aussehen",
+    "hair": {
+      "title": "Haar",
+      "style": "Stil",
+      "color": "Farbe",
+      "highlight": "Sekundärfarbe", 
+      "fade": "verblassen"
+    },
+
+    "opacity": "Intensität",
+    "style": "Stil",
+    "color": "Farbe",
+    "blemishes": "Hautunreinheiten",
+    "beard": "Bart",
+    "eyebrows": "Augenbrauen",
+    "ageing": "Alterung",
+    "makeUp": "Schminke",
+    "blush": "Rötung",
+    "complexion": "Teint",
+    "sunDamage": "Sonnenschäden",
+    "lipstick": "Lippenstift",
+    "moleAndFreckles": "Sommersprossen",
+    "chestHair": "Brustbehaarung",
+    "bodyBlemishes": "Körperunreinheiten",
+    "eyeColor": "Augenfarbe"
+  },
+
+  "components": {
+    "title": "Kleidung",
+    "drawable": "Modell",
+    "texture": "Farbe/Variation",
+    "mask": "Maske",
+    "upperBody": "Hände",
+    "lowerBody": "Hose",
+    "bags": "Taschen",
+    "shoes": "Schuhe",
+    "scarfAndChains": "Halschmuck und Accessoires",
+    "shirt": "Unterbekleidung",
+    "bodyArmor": "Schusswesten",
+    "decals": "Aufnäher",
+    "jackets": "Oberbekleidung"
+  },
+
+  "props": {
+    "title": "Accessoires",
+    "drawable": "Modell",
+    "texture": "Variation",
+    "hats": "Kopfbedeckungen",
+    "glasses": "Brillen",
+    "ear": "Ohrschuck",
+    "watches": "Uhren",
+    "bracelets": "Armreif"
+  }, 
+
+  "tattoos": {
+    "title": "Tattoos",
+    "items": {
+      "ZONE_TORSO": "Oberkörper",
+      "ZONE_HEAD": "Kopfbereich",
+      "ZONE_LEFT_ARM": "Arm Links",
+      "ZONE_RIGHT_ARM": "Arm Rechts",
+      "ZONE_LEFT_LEG": "Bein Links",
+      "ZONE_RIGHT_LEG": "Bein Rechts"
+    },
+    
+    "apply": "Akzeptieren", 
+    "delete": "Entfernen"
+  }
+}
