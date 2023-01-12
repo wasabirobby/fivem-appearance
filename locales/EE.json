@@ -1,0 +1,141 @@
+{
+"modal": {
+"save": {
+"title": "Salvesta",
+"description": "Valik on lõplik"
+},
+"exit": {
+"title": "Katkesta",
+"description": "Muudatusi ei salvestata"
+},
+"accept": "Jah",
+"decline": "Ei"
+},
+"ped": {
+"title": "Ped",
+"model": "Model"
+},
+"headBlend": {
+"title": "Pärimus",
+"shape": {
+"title": "Nägu",
+"firstOption": "Isa",
+"secondOption": "Ema",
+"mix": "Sega"
+},
+"skin": {
+"title": "Nahk",
+"firstOption": "Isa",
+"secondOption": "Ema",
+"mix": "Sega"
+}
+},
+"faceFeatures": {
+"title": "Näoomadused",
+"nose": {
+"title": "Nina",
+"width": "Laius",
+"height": "Pikkus",
+"size": "Suurus",
+"boneHeight": "Luu pikkus",
+"boneTwist": "Luu kalle",
+"peakHeight": "Nina otsa"
+},
+"eyebrows": {
+"title": "Kulmud",
+"height": "Pikkus",
+"depth": "Sügavus"
+},
+"cheeks": {
+"title": "Põsk",
+"boneHeight": "Põse kõrgus",
+"boneWidth": "Põseluu laius",
+"width": "Laius"
+},
+"eyesAndMouth": {
+"title": "Silmad ja suu",
+"eyesOpening": "Silmad",
+"lipsThickness": "Huulte paksus"
+},
+"jaw": {
+"title": "Lõualuu",
+"width": "Laius",
+"size": "Suurus"
+},
+"chin": {
+"title": "Lõug",
+"lowering": "Langetamine",
+"length": "Pikkus",
+"size": "Suurus",
+"hole": "Lõuaotsa suurus"
+},
+"neck": {
+"title": "Kael",
+"thickness": "Paksus"
+}
+},
+"headOverlays": {
+"title": "Välimus",
+"hair": {
+"title": "Juuksed",
+"style": "Stiil",
+"color": "Värv",
+"highlight": "Heledus",
+"fade": "Tuhmus"
+},
+"opacity": "Läbipaistvus",
+"style": "Stiil",
+"color": "Värv",
+"blemishes": "Armid",
+"beard": "Habe",
+"eyebrows": "Kulmud",
+"ageing": "Vanus",
+"makeUp": "Make up",
+"blush": "Põsepuna",
+"complexion": "Jume",
+"sunDamage": "Päikesekahjustus",
+"lipstick": "Huulepulk",
+"moleAndFreckles": "Vistrikud ja tedretähnid",
+"chestHair": "Rinnakarvad",
+"bodyBlemishes": "Keha armid",
+"eyeColor": "Silma värv"
+},
+"components": {
+"title": "Riided",
+"drawable": "Riie",
+"texture": "Variatsioon",
+"mask": "Mask",
+"upperBody": "Käed",
+"lowerBody": "Jalad",
+"bags": "Kotid ja langevarjud",
+"shoes": "Jalatsid",
+"scarfAndChains": "Sallid ja kettid",
+"shirt": "Särk",
+"bodyArmor": "Vestid",
+"decals": "Lisad",
+"jackets": "Jakkid"
+},
+"props": {
+"title": "Rekvisiidid",
+"drawable": "Riie",
+"texture": "Variatsioon",
+"hats": "Mütsid ja kiivrid",
+"glasses": "Prillid",
+"ear": "Kõrv",
+"watches": "Kellad",
+"bracelets": "Käekettid"
+},
+"tattoos": {
+"title": "Tattoveeringud",
+"items": {
+"ZONE_TORSO": "Ülakeha",
+"ZONE_HEAD": "Pea",
+"ZONE_LEFT_ARM": "Vasak käsi",
+"ZONE_RIGHT_ARM": "Parem käsi",
+"ZONE_LEFT_LEG": "Vasak jalg",
+"ZONE_RIGHT_LEG": "Parem jalg"
+},
+"apply": "Rakenda",
+"delete": "Kustuta"
+}
+}
