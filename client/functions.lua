@@ -59,87 +59,91 @@ showTextUI = function(store)
 end
 
 openShop = function(store, price)
-    local ped = cache.ped
-    local currentAppearance = exports['fivem-appearance']:getPedAppearance(ped)
-    local tetovaze = exports['fivem-appearance']:getPedTattoos(ped)
-    currentAppearance.tattoos = tetovaze
-    local config = {}
-    InMenu = true
-    if store == 'clothing' then
-        TriggerEvent('fivem-appearance:clothingShop', price)
+    if Config.EnableComponentPricing then
+        exports['clothing-addon']:openShop(store,price)
     else
-        if store == 'clothing_menu' then 
-            config = {
-                ped = false,
-                headBlend = false,
-                faceFeatures = false,
-                headOverlays = false,
-                components = true,
-                props = true,
-                tattoos = false
-            }
-        elseif store == 'barber' then
-            config = {
-                ped = false,
-                headBlend = true,
-                faceFeatures = true,
-                headOverlays = true,
-                components = false,
-                props = false,
-                tattoos = false
-            }
-        elseif store == 'tattoo' then 
-            config = {
-                ped = false,
-                headBlend = false,
-                faceFeatures = false,
-                headOverlays = false,
-                components = false,
-                props = false,
-                tattoos = true
-            }
-        end
-        exports['fivem-appearance']:startPlayerCustomization(function (appearance)
-            if (appearance) then
-		if json.encode(appearance.tattoos) == '[]' then
-                    appearance.tattoos = tetovaze
-                end
-                if price then
-                    local paid = lib.callback.await('fivem-appearance:payFunds', 100, price)                    
-                    if paid then
-                        lib.notify({
-                            title = Strings.success,
-                            description = (Strings.success_desc):format(addCommas(price)),
-                            duration = 3500,
-                            icon = 'basket-shopping',
-                            type = 'success'
-                        })
+        local ped = cache.ped
+        local currentAppearance = exports['fivem-appearance']:getPedAppearance(ped)
+        local tetovaze = exports['fivem-appearance']:getPedTattoos(ped)
+        currentAppearance.tattoos = tetovaze
+        local config = {}
+        InMenu = true
+        if store == 'clothing' then
+            TriggerEvent('fivem-appearance:clothingShop', price)
+        else
+            if store == 'clothing_menu' then 
+                config = {
+                    ped = false,
+                    headBlend = false,
+                    faceFeatures = false,
+                    headOverlays = false,
+                    components = true,
+                    props = true,
+                    tattoos = false
+                }
+            elseif store == 'barber' then
+                config = {
+                    ped = false,
+                    headBlend = true,
+                    faceFeatures = true,
+                    headOverlays = true,
+                    components = false,
+                    props = false,
+                    tattoos = false
+                }
+            elseif store == 'tattoo' then 
+                config = {
+                    ped = false,
+                    headBlend = false,
+                    faceFeatures = false,
+                    headOverlays = false,
+                    components = false,
+                    props = false,
+                    tattoos = true
+                }
+            end
+            exports['fivem-appearance']:startPlayerCustomization(function (appearance)
+                if (appearance) then
+                    if json.encode(appearance.tattoos) == '[]' then
+                        appearance.tattoos = tetovaze
+                    end
+                    if price then
+                        local paid = lib.callback.await('fivem-appearance:payFunds', 100, price)                    
+                        if paid then
+                            lib.notify({
+                                title = Strings.success,
+                                description = (Strings.success_desc):format(addCommas(price)),
+                                duration = 3500,
+                                icon = 'basket-shopping',
+                                type = 'success'
+                            })
+                            TriggerServerEvent('fivem-appearance:save', appearance)
+                            InMenu = false
+                            ESX.SetPlayerData('ped', PlayerPedId())
+                        else
+                            lib.notify({
+                                title = Strings.no_funds,
+                                description = Strings.no_funds_desc,
+                                duration = 3500,
+                                icon = 'ban',
+                                type = 'error'
+                            })                           
+                            exports['fivem-appearance']:setPlayerAppearance(currentAppearance)
+                            InMenu = false
+                            TriggerServerEvent('fivem-appearance:save',currentAppearance)
+                            ESX.SetPlayerData('ped', PlayerPedId())
+                        end
+                    else
                         TriggerServerEvent('fivem-appearance:save', appearance)
                         InMenu = false
                         ESX.SetPlayerData('ped', PlayerPedId())
-                    else
-                        lib.notify({
-                            title = Strings.no_funds,
-                            description = Strings.no_funds_desc,
-                            duration = 3500,
-                            icon = 'ban',
-                            type = 'error'
-                        })                           
-                        exports['fivem-appearance']:setPlayerAppearance(currentAppearance)
-                        InMenu = false
-                        TriggerServerEvent('fivem-appearance:save',currentAppearance)
-                        ESX.SetPlayerData('ped', PlayerPedId())
                     end
                 else
-                    TriggerServerEvent('fivem-appearance:save', appearance)
-                    InMenu = false
                     ESX.SetPlayerData('ped', PlayerPedId())
+                    inMenu = false
                 end
-            else
-                ESX.SetPlayerData('ped', PlayerPedId())
-                inMenu = false
-            end
-        end, config)
+            end, config)
+        end
     end
 end
 
