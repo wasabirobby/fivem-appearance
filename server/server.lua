@@ -95,7 +95,7 @@ end, false, {help = Strings.skin_command_help, validate = true, arguments = {
 	{name = 'playerId', help = Strings.skin_command_arg_help, type = 'player'}
 }})
 
--- esx_skin/skinchanger compatibility
+-- esx_skin/skinchanger/other compatibility
 getGender = function(model)
     if model == 'mp_f_freemode_01' then
         return 1
@@ -121,4 +121,16 @@ ESX.RegisterServerCallback('esx_skin:getPlayerSkin', function(source, cb)
 		appearance.sex = getGender(appearance.model)
 		cb(appearance, jobSkin)
 	end
+end)
+
+ESX.RegisterServerCallback('fivem-appearance:getPlayerSkin', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local users = MySQL.query.await('SELECT skin FROM outfits users identifier = ?', {xPlayer.identifier})
+	if users then
+		local user, appearance = users[1]
+		if user.skin then
+			appearance = json.decode(user.skin)
+		end
+	end
+	cb(appearance)
 end)
