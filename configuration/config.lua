@@ -538,3 +538,5 @@ Config.DefaultSkin = {
 	["eyeColor"]=-1,
 	["model"]="mp_m_freemode_01"
 }
+
+Config.EnableComponentPricing = false
