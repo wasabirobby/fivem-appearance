@@ -1,0 +1,142 @@
+{
+    "modal": {
+      "save": {
+        "title": "Gem ændring",
+        "description": "Du vil forblive grim"
+      },
+      "exit": {
+        "title": "Afslut ændring",
+        "description": "Ingen ændringer vil blive gemt"
+      },
+      "accept": "Ja",
+      "decline": "Nej"
+    },
+    "ped": {
+      "title": "Ped",
+      "model": "Model"
+    },
+    "headBlend": {
+      "title": "Arv",
+      "shape": {
+        "title": "Ansigt",
+        "firstOption": "Far",
+        "secondOption": "Mor",
+        "mix": "Bland"
+      },
+      "skin": {
+        "title": "Hud",
+        "firstOption": "Far",
+        "secondOption": "Mor",
+        "mix": "Bland"
+      }
+    },
+    "faceFeatures": {
+      "title": "Ansigtet",
+      "nose": {
+        "title": "Næse",
+        "width": "Bredde",
+        "height": "Højde",
+        "size": "Størrelse",
+        "boneHeight": "Knogle Højde",
+        "boneTwist": "Knogle Vrid",
+        "peakHeight": "Tophøjde"
+      },
+      "eyebrows": {
+        "title": "Øjenbryn",
+        "height": "Højde",
+        "depth": "Dybte"
+      },
+      "cheeks": {
+        "title": "Kinder",
+        "boneHeight": "Knogle Højde",
+        "boneWidth": "Knogle Bredde",
+        "width": "Bredde"
+      },
+      "eyesAndMouth": {
+        "title": "Øjne og Mund",
+        "eyesOpening": "Øjne åbning",
+        "lipsThickness": "Læbe tykkelse"
+      },
+      "jaw": {
+        "title": "Kæbe",
+        "width": "Bredde",
+        "size": "Størrelse"
+      },
+      "chin": {
+        "title": "Hage",
+        "lowering": "Sænkning",
+        "length": "Længde",
+        "size": "Størrelse",
+        "hole": "Hulstørrelse"
+      },
+      "neck": {
+        "title": "Nakke",
+        "thickness": "Tykkelse"
+      }
+    },
+    "headOverlays": {
+      "title": "Udseende",
+      "hair": {
+        "title": "Hår",
+        "style": "Stil",
+        "color": "Farve",
+        "highlight": "Fremhæv", 
+        "fade": "Falme"
+      },
+      "opacity": "Gennemsigtighed",
+      "style": "Stil",
+      "color": "Farve",
+      "blemishes": "Pletter",
+      "beard": "Skæg",
+      "eyebrows": "Øjenbryn",
+      "ageing": "Aldring",
+      "makeUp": "Makeup",
+      "blush": "Rødme",
+      "complexion": "Teint",
+      "sunDamage": "Solskade",
+      "lipstick": "Læbestift",
+      "moleAndFreckles": "Skin og Fregner",
+      "chestHair": "Brysthår",
+      "bodyBlemishes": "Skønhedsfejl",
+      "eyeColor": "Øjenfarve"
+    },
+    "components": {
+      "title": "Tøj",
+      "drawable": "Trækbar",
+      "texture": "Tekstur",
+      "mask": "Maske",
+      "upperBody": "Hænder",
+      "lowerBody": "Ben",
+      "bags": "Taske og faldskærm",
+      "shoes": "Sko",
+      "scarfAndChains": "Tørklæde og Halskæder",
+      "shirt": "Bluse",
+      "bodyArmor": "Sikkerhedsvest",
+      "decals": "Decals",
+      "jackets": "Jakker"
+    },
+    "props": {
+      "title": "Rekvisitter",
+      "drawable": "Trækbar",
+      "texture": "Tekstur",
+      "hats": "Hatte og hjelme",
+      "glasses": "Briller",
+      "ear": "Øre",
+      "watches": "Ure",
+      "bracelets": "Armbånd"
+    }, 
+    "tattoos": {
+      "title": "Tatoveringer",
+      "items": {
+        "ZONE_TORSO": "Overkrop",
+        "ZONE_HEAD": "Hoved",
+        "ZONE_LEFT_ARM": "Venstre arm",
+        "ZONE_RIGHT_ARM": "Højre arm",
+        "ZONE_LEFT_LEG": "Venstre leg",
+        "ZONE_RIGHT_LEG": "Højre leg"
+      },
+      "apply": "Anvend", 
+      "delete": "Slet"
+    }
+  }
+  
