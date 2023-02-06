@@ -2,40 +2,22 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
-ESX = exports["es_extended"]:getSharedObject()
-
-MySQL.ready(function()
-	MySQL.Sync.execute(
-		"CREATE TABLE IF NOT EXISTS `outfits` (" ..
-			"`id` int NOT NULL AUTO_INCREMENT, " ..
-			"`identifier` varchar(60) NOT NULL, " ..
-			"`name` longtext, " ..
-			"`ped` longtext, " ..
-			"`components` longtext, " ..
-			"`props` longtext, " ..
-			"PRIMARY KEY (`id`), " ..
-			"UNIQUE KEY `id_UNIQUE` (`id`) " ..
-		") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; "
-	)
-end)
+ESX = Config.esxImport()
 
 -- Events
 
-RegisterServerEvent('fivem-appearance:save')
-AddEventHandler('fivem-appearance:save', function(appearance)
+RegisterNetEvent('fivem-appearance:save', function(appearance)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.update('UPDATE users SET skin = ? WHERE identifier = ?', {json.encode(appearance), xPlayer.identifier})
 end)
 
-RegisterServerEvent("fivem-appearance:saveOutfit")
-AddEventHandler("fivem-appearance:saveOutfit", function(name, pedModel, pedComponents, pedProps)
+RegisterNetEvent('fivem-appearance:saveOutfit', function(name, pedModel, pedComponents, pedProps)
 	local source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.insert.await('INSERT INTO outfits (identifier, name, ped, components, props) VALUES (?, ?, ?, ?, ?)', {xPlayer.identifier, name, json.encode(pedModel), json.encode(pedComponents), json.encode(pedProps)})
 end)
 
-RegisterServerEvent("fivem-appearance:deleteOutfit")
-AddEventHandler("fivem-appearance:deleteOutfit", function(id)
+RegisterNetEvent('fivem-appearance:deleteOutfit', function(id)
 	local source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	MySQL.Async.execute('DELETE FROM `outfits` WHERE `id` = @id', {

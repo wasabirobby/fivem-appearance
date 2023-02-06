@@ -4,6 +4,16 @@
 
 Config = {}
 
+Config.esxImport = function()
+	if IsDuplicityVersion() then
+		--[[ SERVER ]]
+		return exports['es_extended']:getSharedObject()
+	else
+		--[[ CLIENT ]]
+		return exports['es_extended']:getSharedObject()
+	end
+
+end
 Config.PaymentAccount = 'bank' -- Payment account you want to pay from(For example; 'money', 'bank', 'black_money')
 
 Config.ClothingShops = {

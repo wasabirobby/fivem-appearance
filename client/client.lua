@@ -1,7 +1,8 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
-ESX = exports["es_extended"]:getSharedObject()
+
+ESX = Config.esxImport()
 local shops, savedOutfits = {}, {}
 
 -- ESX Events
@@ -28,8 +29,7 @@ end)
 
 -- Appearance Events
 
-RegisterNetEvent('fivem-appearance:skinCommand')
-AddEventHandler('fivem-appearance:skinCommand', function()
+RegisterNetEvent('fivem-appearance:skinCommand', function()
 	local config = {
 		ped = true,
 		headBlend = true,
@@ -48,8 +48,7 @@ AddEventHandler('fivem-appearance:skinCommand', function()
 	end, config)
 end)
 
-RegisterNetEvent('fivem-appearance:setOutfit')
-AddEventHandler('fivem-appearance:setOutfit', function(data)
+RegisterNetEvent('fivem-appearance:setOutfit', function(data)
 	local pedModel = data.ped
 	local pedComponents = data.components
 	local pedProps = data.props
@@ -86,7 +85,6 @@ RegisterNetEvent('fivem-appearance:saveOutfit', function()
 end)
 
 AddEventHandler('fivem-appearance:clothingMenu', function(price)
-    
     openShop('clothing_menu', price)
 end)
 
@@ -134,7 +132,7 @@ RegisterNetEvent('fivem-appearance:browseOutfits', function()
                 event = 'fivem-appearance:clothingShop'
             }
         }
-        for i=1, #outfits do 
+        for i=1, #outfits do
             Options[#Options + 1] = {
                 title = outfits[i].name,
                 event = 'fivem-appearance:setOutfit',

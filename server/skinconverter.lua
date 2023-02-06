@@ -8,8 +8,7 @@ RegisterCommand('skinConvert', function(source, args, raw)
 	end
 end)
 
-RegisterServerEvent("fivem-appearance:convert")
-AddEventHandler("fivem-appearance:convert", function()
+RegisterNetEvent("fivem-appearance:convert", function()
 	MySQL.Async.fetchAll("SELECT * FROM users",{},function(data)
 		for k,v in pairs(data) do
 			local tempSkin = nil
